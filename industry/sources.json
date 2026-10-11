@@ -1,6 +1,54 @@
 {
-  "$comment": "示范信源：首次启动时导入（scripts/seed.ts），已存在的不会被覆盖。之后在后台“信源”里新建、修改和暂停。字段说明见 docs/customize.md。",
+  "$comment": "AI机会雷达信源：保留原有 18 个海外源，2026-10-08 经站长确认增加量子位、极客公园、少数派。启动时仅补充不存在的来源（scripts/seed.ts），已有配置不会覆盖；之后在后台调整。全文展示默认关闭。",
   "sources": [
+    {
+      "id": "rss-qbitai",
+      "name": "量子位",
+      "kind": "rss",
+      "config": {
+        "feedUrl": "https://www.qbitai.com/feed",
+        "_aihot": { "initialBackfillLimit": 8 }
+      },
+      "tier": "T2",
+      "owner_entity_id": null,
+      "participation_mode": "editorial",
+      "interval_minutes": 120,
+      "tags": ["国内", "媒体", "AI应用"],
+      "site_fulltext": false,
+      "syndicate_fulltext": false
+    },
+    {
+      "id": "rss-geekpark",
+      "name": "极客公园",
+      "kind": "rss",
+      "config": {
+        "feedUrl": "https://www.geekpark.net/rss",
+        "_aihot": { "initialBackfillLimit": 8 }
+      },
+      "tier": "T2",
+      "owner_entity_id": null,
+      "participation_mode": "editorial",
+      "interval_minutes": 120,
+      "tags": ["国内", "媒体", "产品商业化"],
+      "site_fulltext": false,
+      "syndicate_fulltext": false
+    },
+    {
+      "id": "rss-sspai",
+      "name": "少数派",
+      "kind": "rss",
+      "config": {
+        "feedUrl": "https://sspai.com/feed",
+        "_aihot": { "initialBackfillLimit": 8 }
+      },
+      "tier": "T2",
+      "owner_entity_id": null,
+      "participation_mode": "editorial",
+      "interval_minutes": 180,
+      "tags": ["国内", "媒体", "工具实践"],
+      "site_fulltext": false,
+      "syndicate_fulltext": false
+    },
     {
       "id": "rss-openai-news",
       "name": "OpenAI News",

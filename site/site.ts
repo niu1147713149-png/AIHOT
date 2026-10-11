@@ -18,30 +18,30 @@ export const EDITION_WHEN = {
 
 export const SITE = {
   /** 站名：导航、页面标题、分享图、RSS、MCP、后台都用它。 */
-  name: "MyHOT",
+  name: "AI机会雷达",
   /**
    * 行业词：拼进默认说法里，比如“AI 日报”“AI 动态”。
    * 改成“法律”“HR”“黄金”之类，页面上就会变成“法律日报”“法律动态”。
    */
   subject: "AI",
   /** 首页的完整标题（浏览器标签、搜索结果）。 */
-  homeTitle: "MyHOT — AI 行业动态 · 每日精选与日报",
+  homeTitle: "AI机会雷达 — 全球 AI 动态 · 国内应用与商机线索",
   /** 主题目录页（/topics）的标题。 */
-  topicsTitle: "AI 主题：公司与模型、技术方向、内容形态的最新动态",
+  topicsTitle: "AI 应用主题：工具服务、内容创作、流程自动化与商业验证",
   /** 反馈表单输入框里的示例。 */
-  feedbackExample: "例如：我在搜索某个关键词时遇到……我原本想……",
+  feedbackExample: "例如：想关注面向小团队的 AI 客服案例，希望看到客户需求、使用成本和实际效果……",
   /** 反馈页标题下面的一句话。 */
   feedbackLead: "发现 bug、想要的功能、看不顺眼的地方，都可以告诉我们。",
   /** 反馈表单邮箱框里的提示。 */
   feedbackEmailHint: "留下邮箱，我们可以回信联系你",
   /** 一句话介绍：搜索引擎、分享卡片、RSS、llms.txt 会用。 */
-  description: `从一批 AI 信源里挑出值得看的动态，把同一件事的多篇报道归到一起，${EDITION_WHEN.daily} 出一份日报。`,
+  description: `面向做国内业务的个人和小团队，追踪全球 AI 动态，筛选工具服务、内容创作与流程自动化的应用机会，${EDITION_WHEN.daily} 出一份日报。`,
   /** llms.txt 里一句话介绍下面的一段详细介绍（选填）。 */
-  llmsIntro: null as string | null,
+  llmsIntro: "以国内业务为主要阅读视角，优先阅读有具体任务、成本、效果和使用条件的 AI 动态。海外资讯用于了解能力变化与可借鉴的方法，不默认产品在国内可用。商机线索以原文证据为依据，区分已发生的商业结果与作者主张；国内外差异只在来源提供比较依据时呈现。" as string | null,
   /** 一行小字：分享图、海报下方。 */
-  tagline: "值得关注的 AI 动态",
+  tagline: "看全球 AI，找国内应用机会",
   /** 搜索引擎读到的关键词（首页结构化数据）。 */
-  keywords: ["AI 资讯", "AI 新闻", "AI 日报", "AI 行业动态"] as string[],
+  keywords: ["AI 资讯", "AI 信息差", "AI 应用", "AI 商机", "AI 工具服务", "内容创作", "流程自动化", "AI 日报"] as string[],
   /** 网站开始收录的年份（结构化数据的时间范围，选填）。 */
   since: null as string | null,
   /** 界面语言（HTML lang、og:locale）。 */
@@ -67,15 +67,15 @@ export const SITE = {
   /** 中国大陆网站的 ICP 备案号（选填），填了就显示在侧栏底部和“我的”页底部，并链接到工信部备案系统。 */
   icp: null as string | null,
   /** 源码的 GitHub 仓库地址（选填），填了就在侧栏底部和“我的”页底部显示“GitHub 开源”。 */
-  github: null as string | null,
+  github: "https://github.com/niu1147713149-png/AIHOT" as string | null,
   /** 结构化数据里的网站运营者（搜索引擎用）。 */
   organization: {
-    name: "MyHOT",
+    name: "AI机会雷达",
     /** 创始人（选填）。 */
     founder: null as null | { name: string; alternateName?: string; jobTitle?: string; description?: string; url?: string },
   },
   /** 抓取信源时报上的名字和版本（User-Agent 里用），不要冒用别的站。 */
-  crawlerName: "MyHOTBot/1.0",
+  crawlerName: "AIOpportunityRadarBot/1.0",
 } as const;
 
 /** 使用规则和隐私说明两页（正文在 pages/ 里）。 */
@@ -123,7 +123,7 @@ export const NAV = {
 /** 条目卡片和详情页上的几处说法和显示。 */
 export const ITEM_COPY = {
   /** 模型写的那句理由叫什么：卡片、详情页、Markdown 导出、给 Agent 的回答和群推送都用它。 */
-  reasonLabel: "推荐理由",
+  reasonLabel: "应用价值",
   /** 读者在网页和分享图上看不看得到 AI 评分。只管显示：公开 API 和 MCP 的数据照样带 score，后台照常显示。 */
   showScore: true,
 };
@@ -143,16 +143,16 @@ export const ABOUT = {
   /** 页面描述（搜索结果、分享卡片）。 */
   description: `关于 ${SITE.name}：${SITE.description}`,
   /** 大标题：第一行正常颜色，第二行强调色。 */
-  headline: ["AI 圈每天都有新动静，", "值得看的，只有几条。"] as [string, string],
+  headline: ["看懂全球 AI 变化，", "找到国内业务的应用机会。"] as [string, string],
   /** 标题下面的一段话。{sources} 会换成实时的信源数（两边自动加空格，所以 {sources} 两边不写空格）；统计没取到时换成 sourcesFallback。 */
-  lead: `${SITE.name} 替你盯着{sources}个信源：抓取、归并、打分、精选，${EDITION_WHEN.daily} 出一份日报。免费，不用注册。`,
+  lead: `${SITE.name} 替做国内业务的个人和小团队盯着{sources}个国内外信源，聚焦 AI 工具服务、内容创作和流程自动化。关注真实需求、成本与落地条件，${EDITION_WHEN.daily} 出一份日报。免费，不用注册。`,
   sourcesFallback: "十几",
   /** 信源河动画下面的四个环节。 */
   steps: {
-    collect: "官方博客、媒体和个人的订阅源都在看；更新越勤的源看得越勤，最快 15 分钟看一次。",
-    store: "抓到的都存下来，同一件事的报道归到一起，热点榜就是从这里算出来的。",
-    select: `模型先看是不是这个行业的事、有没有实际信息，再写中文标题、摘要和${ITEM_COPY.reasonLabel}；营销稿和重复转发进不来。`,
-    publish: `${EDITION_WHEN.daily} 出日报，${EDITION_WHEN.weekly} 出周报，${EDITION_WHEN.monthly} 出月报。`,
+    collect: "从国内科技媒体、实用工具社区和海外官方博客、开发者实践中收集 AI 动态，保留原文链接供查证。",
+    store: "同一件事的多篇报道归到一起；关注产品能力、价格、开放地区与商用条件的变化，有比较证据才谈信息差。",
+    select: `优先评价可复用的方法、有结果的应用案例和商业变化，写清中文摘要与${ITEM_COPY.reasonLabel}，压低空泛营销和收益口号。`,
+    publish: `${EDITION_WHEN.daily} 出日报，${EDITION_WHEN.weekly} 出周报，${EDITION_WHEN.monthly} 出月报，帮助你发现值得进一步验证的应用线索。`,
   },
   /**
    * 作者块（选填），null 就不显示。
@@ -185,7 +185,7 @@ export const ADMIN = {
 /** Agent 接入页的示例。 */
 export const AGENT = {
   /** MCP 工具表里“搜索”一行：能搜什么、可以怎么问。 */
-  search: { scope: "按公司、产品、人物或话题搜最近 7 天", ask: "这家公司最近发了什么？" },
+  search: { scope: "按公司、产品、应用场景或成本话题搜最近 7 天", ask: "最近有哪些 AI 内容创作或自动化工具更新？价格和使用条件有什么变化？" },
 };
 
 /** 日报、周报、月报版面上的说法。 */
@@ -193,12 +193,12 @@ export const REPORTS = {
   /** 报头下面的出版者一行。 */
   imprint: SITE.name.toUpperCase(),
   /** 报头旁边的一个词。 */
-  motto: SITE.subject as string,
+  motto: "应用与机会" as string,
   /** 每种报告页面的描述（搜索结果、分享卡片），不带句号；llms.txt 介绍周报、月报时也用它。 */
   descriptions: {
-    daily: `${SITE.name} ${subjectAfter(`${EDITION_WHEN.daily}（北京时间）发布的`, "行业精编日报")}`,
-    weekly: subjectAfter("每周", "行业综合回顾"),
-    monthly: subjectAfter("每月", "行业盘点"),
+    daily: `${SITE.name} ${EDITION_WHEN.daily}（北京时间）发布的 AI 应用与商业动态精选`,
+    weekly: "每周 AI 应用、成本与商业变化回顾",
+    monthly: "每月 AI 应用进展与商机线索盘点",
   },
   /**
    * 一期里的一条怎么称呼（“4 件大事”）：没有头条时的标题（“这一天的 4 件 AI 大事”）、报头和往期目录的条数、
@@ -210,7 +210,7 @@ export const REPORTS = {
   /** 报告分享图上“共几条”的说法。 */
   shareUnit: "件大事",
   /** 日报时段内有资料经过评判、但没有新大事时的标题与导语。 */
-  quiet: { title: "今日安静，无大事发生", paragraph: `${subjectAfter("北京时间 {start} 至 {end}，没有新的", "大事")}。` },
+  quiet: { title: "本期暂无达到精选标准的新动态", paragraph: "北京时间 {start} 至 {end}，已收录资料中暂无达到精选标准的新动态，可在全部动态中继续浏览。" },
 };
 
 /** 运维告警（只发给站长）里随部署而变的几处说法。 */
@@ -243,11 +243,11 @@ export const COMMUNITY_FEEDS: { dev: string[]; hn: string[] } = {
 /** 各页分享图（/og/pages/*.png）上的文字。主题目录页的那张按主题数自动生成。 */
 export const CARDS: Record<string, { kicker: string; title: string; subtitle: string; accent?: "hot" | "amber" }> = {
   site: { kicker: subjectAfter("每日", "精选"), title: SITE.tagline, subtitle: SITE.description },
-  all: { kicker: subjectAfter("全部", "动态"), title: "所有信源的最新动态，一站看完", subtitle: "按时间汇总各信源的最新动态，可按类别与标签筛选。" },
+  all: { kicker: subjectAfter("全部", "动态"), title: "国内外 AI 动态，一站追踪", subtitle: "从国内业务出发，关注应用、成本与可借鉴的方法。" },
   hot: { kicker: "热点榜", title: "过去 48 小时，大家在讨论什么", subtitle: "热度指数、趋势与组成热度的公开来源。", accent: "hot" },
   daily: { kicker: withSubject("日报"), title: subjectAfter(`每天 ${spokenTime(EDITION_TIMES.daily)}，一份读得完的`, "日报"), subtitle: `${subjectAfter("前一天值得关注的", "动态")}。` },
-  weekly: { kicker: withSubject("周报"), title: `一周${REPORTS.entry.noun}，一次看清`, subtitle: "本周的主线、重要发布与值得回看的讨论。" },
-  monthly: { kicker: withSubject("月报"), title: "一个月的变化", subtitle: "月度主线与关键事件回顾。" },
+  weekly: { kicker: withSubject("周报"), title: `一周${REPORTS.entry.noun}，一次看清`, subtitle: "本周应用进展、成本变化与商业线索。" },
+  monthly: { kicker: withSubject("月报"), title: "一个月的应用变化", subtitle: "回顾 AI 工具服务、内容创作与自动化的重要进展。" },
   about: { kicker: "关于", title: `关于 ${SITE.name}`, subtitle: SITE.description },
   terms: { kicker: "使用规则", title: `${SITE.name} 使用规则`, subtitle: "网页、API、RSS 与 MCP 的使用范围。" },
   privacy: { kicker: "隐私说明", title: `${SITE.name} 隐私说明`, subtitle: "访问日志、浏览器本地数据与反馈资料的处理方式。" },

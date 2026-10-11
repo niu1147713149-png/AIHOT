@@ -14,6 +14,7 @@ import { QUEUES, stopBoss } from "@aihot/backend/jobs/queue";
 import { compactAnswerFirstSummary, enforceIdentity, MAX_BODY_CHARS, parseTranslateOutput } from "@aihot/backend/editorial/writing";
 import { READER_WORDING } from "@aihot/industry/wording";
 import { ITEM_TYPES } from "@aihot/industry/taxonomy";
+import { ITEM_COPY } from "@aihot/site";
 
 const T = tag();
 const SOURCE = `test-analyze-${T}`;
@@ -114,7 +115,7 @@ test("a word the site keeps from readers goes back once to be changed; copy with
     const r = await row(id);
     assert.deepEqual([r.title_zh, r.reason_zh], ["标题里换了说法 WORDY", "理由里换了说法 WORDY"], "the mended copy is stored");
     const sent = requests.find((q) => q.marker === "WORDY" && q.step === "wording")!;
-    assert.ok(sent.user.includes("标题用了“禁用词”") && sent.user.includes("推荐理由用了“禁用词”"), "each use named");
+    assert.ok(sent.user.includes("标题用了“禁用词”") && sent.user.includes(`${ITEM_COPY.reasonLabel}用了“禁用词”`), "each use named");
     assert.ok(!requests.some((q) => q.step === "wording" && q.marker !== "WORDY"), "the other items' copy uses none");
   } finally {
     (READER_WORDING as Array<readonly [RegExp, string]>).pop();

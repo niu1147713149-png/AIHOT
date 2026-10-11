@@ -18,6 +18,48 @@
   ],
   "topics": [
     {
+      "slug": "ai-tool-services",
+      "name": "AI 工具服务",
+      "group": "field",
+      "tags": ["工具服务"],
+      "definition": "面向具体客户任务的 AI 工具、API 服务与实施交付，关注能解决什么问题、如何使用和适用边界。"
+    },
+    {
+      "slug": "content-creation",
+      "name": "内容创作",
+      "group": "field",
+      "tags": ["内容创作"],
+      "definition": "文本、图像、音视频的 AI 制作与编辑工作流，关注输出质量、生产成本、商用条件和可复用方法。"
+    },
+    {
+      "slug": "workflow-automation",
+      "name": "流程自动化",
+      "group": "field",
+      "tags": ["流程自动化"],
+      "definition": "小团队的办公、客服、营销与业务流程自动化，关注任务步骤、工具集成、人工复核和落地结果。"
+    },
+    {
+      "slug": "pricing-costs",
+      "name": "定价与成本",
+      "group": "field",
+      "tags": ["定价/成本"],
+      "definition": "AI 工具与服务的价格、套餐、额度和运行成本变化，保留币种、计费单位与适用条件，辅助选型与交付判断。"
+    },
+    {
+      "slug": "business-validation",
+      "name": "商业验证",
+      "group": "field",
+      "tags": ["商业验证"],
+      "definition": "有客户需求、付费、转化、留存或交付结果证据的 AI 应用案例与失败复盘，区分营收、利润和融资。"
+    },
+    {
+      "slug": "global-localization",
+      "name": "出海与本地化",
+      "group": "field",
+      "tags": ["出海/本地化"],
+      "definition": "有原文依据的国内外开放地区、语言适配、渠道和商用条件差异，帮助发现需要进一步验证的跨市场应用线索。"
+    },
+    {
       "slug": "openai",
       "name": "OpenAI / ChatGPT",
       "group": "company",
