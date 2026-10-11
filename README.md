@@ -1,3 +1,18 @@
+# AI机会雷达
+
+面向做国内业务的个人和小团队，追踪全球 AI 动态，发现工具服务、内容创作和流程自动化的应用机会。基于 [AIHOT 开源框架](https://github.com/KKKKhazix/AIHOT) 定制，本站使用独立品牌和筛选规则。
+
+- [二次开发路线与任务清单](docs/development-roadmap.md)：缺失功能、开发顺序、依赖和验收条件。
+- [原站功能研究](docs/reference-site-audit-20261012.md)：公开页面与本地能力的对照依据。
+- [本站定制说明](docs/ai-opportunity.md)：国内业务取向、信源和初标状态。
+- [升级与验证记录](docs/upstream-upgrade-20261012.md)：上游基线、合并、测试及本地更新记录。
+
+目前继续本地使用；部署地址由 `.env` 的 `SITE_URL` 设置。模型榜、主题大事记等在任务清单中标为待开发，不代表本仓库已经实现。
+
+以下保留上游框架的介绍、部署文档和 MIT 许可说明。
+
+---
+
 <p align="center">
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="docs/assets/banner-dark.png">
