@@ -8,7 +8,7 @@ import sharp from "sharp";
 import { config, REPO_ROOT } from "../config.ts";
 import { SITE } from "@aihot/site";
 
-export const OG_TEMPLATE_VERSION = "og-2026-09-29.1";
+export const OG_TEMPLATE_VERSION = "og-2026-10-14-aivane.1";
 const WIDTH = 1200;
 const HEIGHT = 630;
 const CACHE_DIR = path.join(config.dataDir, "ogcache");

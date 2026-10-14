@@ -18,14 +18,14 @@ export const EDITION_WHEN = {
 
 export const SITE = {
   /** 站名：导航、页面标题、分享图、RSS、MCP、后台都用它。 */
-  name: "AI机会雷达",
+  name: "AIVANE",
   /**
    * 行业词：拼进默认说法里，比如“AI 日报”“AI 动态”。
    * 改成“法律”“HR”“黄金”之类，页面上就会变成“法律日报”“法律动态”。
    */
   subject: "AI",
   /** 首页的完整标题（浏览器标签、搜索结果）。 */
-  homeTitle: "AI机会雷达 — 全球 AI 动态 · 国内应用与商机线索",
+  homeTitle: "AIVANE — 全球 AI 动态 · 国内应用与商机线索",
   /** 主题目录页（/topics）的标题。 */
   topicsTitle: "AI 应用主题：工具服务、内容创作、流程自动化与商业验证",
   /** 反馈表单输入框里的示例。 */
@@ -70,12 +70,12 @@ export const SITE = {
   github: "https://github.com/niu1147713149-png/AIHOT" as string | null,
   /** 结构化数据里的网站运营者（搜索引擎用）。 */
   organization: {
-    name: "AI机会雷达",
+    name: "AIVANE",
     /** 创始人（选填）。 */
     founder: null as null | { name: string; alternateName?: string; jobTitle?: string; description?: string; url?: string },
   },
   /** 抓取信源时报上的名字和版本（User-Agent 里用），不要冒用别的站。 */
-  crawlerName: "AIOpportunityRadarBot/1.0",
+  crawlerName: "AIVANEBot/1.0",
 } as const;
 
 /** 使用规则和隐私说明两页（正文在 pages/ 里）。 */

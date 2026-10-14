@@ -79,6 +79,21 @@ docker compose run --rm setup && docker compose up -d
 
 下面按时间从新到旧列出每次更新要注意的事。
 
+#### 本站模型榜与 Tibo 重置监控（2026 年 10 月 14 日）
+
+本站模块 `modules/ai-tools/` 新增迁移 `0086_ai_tool_snapshots.sql`，只创建公开参考快照表，不改文章、信源、全文展示权限或现有模型配置。按上面的备份、构建、停止、迁移和启动顺序更新。Dockerfile 已加入模块依赖，不能只替换前端静态文件。
+
+`.env.example` 的 `AI_TOOLS_SYNC_ENABLED` 默认 `false`。本地个人使用时在 `.env` 设 `AI_TOOLS_SYNC_ENABLED=true`，保留既有 `COLLECT_ENABLED=true`；`SITE_URL` 主机须为 `localhost`、`127.0.0.1` 或 `[::1]`。本机端口建议保持 `PORT=127.0.0.1:3080`。修改开关后重启 api 和 worker；web 不接收此开关或任何后端凭据。来源公开资料同步不需要 `MODEL_CALLS_ENABLED`，不新增模型请求。
+
+```bash
+# 迁移并启动新版后，初始化两项工具；重复执行会遵守下次允许获取的时间。
+docker compose exec -T api node modules/ai-tools/scripts/sync.ts
+```
+
+打开 `/leaderboard` 和 `/codex-reset`。worker 在后台调度：榜单每小时第 7 分钟检查，成功获取后至少间隔 6 小时；重置近期记录每 10 分钟检查，完整历史至少间隔 24 小时，来源的更长缓存或重试期限优先。页面加载只读取数据库，不向来源发请求。后台“运行”页可查 `ai-tools.leaderboard` 与 `ai-tools.codex-reset`。
+
+关闭开关会停止同步，已有快照仍可读并显示核对时间；网络错误保留上次结果，来源明确删除 / 禁止缓存时清除相应快照。开关的本地主机限制不是访问控制：不要将这个本地服务通过反向代理或隧道直接公开。对外部署前关闭模块入口与接口，并确定来源许可或采用独立数据来源；MIT 代码许可不包含第三方运营数据。功能边界和故障诊断见 [模块说明](../modules/ai-tools/README.md)。
+
 日报缺期告警按北京时间的具体日期跟踪，跨午夜不会自动恢复；只有对应日报存在才发恢复通知。新缺期检查最近 7 个日历日（含今天），不早于最早的日报或 reports.compose 运行记录；没有历史记录时只检查今天。已告警的日期在这 7 天里一直跟踪，关闭采集/模型或 worker 启动宽限期也不会把缺期当成恢复；超出 7 天仍没有日报的，发一条“没能补出、停止提醒”后不再提醒。旧的 report.daily 状态自动按首次告警时间迁移，保留提醒间隔。出刊后两小时告警、每小时提醒及飞书开关保持不变；无需数据库迁移。自定义 responder 若按旧 `report.daily` 精确匹配，需改为识别 `report.daily:YYYY-MM-DD` 日期键。
 
 #### 读者文字的改用词（2026 年 10 月 9 日）

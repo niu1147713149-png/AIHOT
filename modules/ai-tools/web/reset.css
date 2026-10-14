@@ -1,0 +1,10 @@
+.reset-watch {
+  --cal-plain: rgba(28, 39, 51, 0.024);
+  --cal-confirmed: color-mix(in srgb, var(--ok-ink) 12%, var(--surface));
+  --cal-inferred: color-mix(in srgb, var(--ink-4) 10%, var(--surface));
+  --cal-announced: color-mix(in srgb, var(--amber-ink) 14%, var(--surface));
+  --panel-quiet: color-mix(in srgb, var(--bg) 48%, var(--surface));
+}
+[data-theme="dark"] .reset-watch { --cal-plain: rgba(255, 255, 255, 0.03); }
+.reset-wash { background: linear-gradient(135deg, color-mix(in srgb, var(--ok-ink) 7%, var(--surface)), var(--surface) 60%); }
+.reset-dot { width: 8px; height: 8px; border-radius: 50%; background: currentColor; box-shadow: 0 0 0 4px color-mix(in srgb, currentColor 18%, transparent); }

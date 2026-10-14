@@ -1,0 +1,91 @@
+{
+  "retrievedAt": "2026-10-14",
+  "usage": "Provider identification in the personal local reference site. Trademarks belong to their owners; source access does not imply a redistribution license.",
+  "assets": [
+    {
+      "file": "anthropic.svg",
+      "source": "https://aihot.news/model-providers/anthropic.svg",
+      "sha256": "d4366130584b1027bbc376e3c06a48500d6e862403a69556726d7722610e5561"
+    },
+    {
+      "file": "deepseek.svg",
+      "source": "https://aihot.news/model-providers/deepseek.svg",
+      "sha256": "0a47d55e6449ef97fb2185020f8118d75ad1ffe5cd711bef6862699f50d5217b"
+    },
+    {
+      "file": "fireworks.svg",
+      "source": "https://aihot.news/model-providers/fireworks.svg",
+      "sha256": "86b7f4b33ca48c5617f10e2cef5aaa7096c5e798090ceb2d0c21b01273660c76"
+    },
+    {
+      "file": "google.svg",
+      "source": "https://aihot.news/model-providers/google.svg",
+      "sha256": "4fb5af9c85ca246667d2376d06fc785325e37ce9c9ef3d6606f07ba18602868e"
+    },
+    {
+      "file": "ling.png",
+      "source": "https://aihot.news/model-providers/ling.png",
+      "sha256": "206b4b04b4bcc0b35e6fd394da1bc203cc55ce4facce8f2d39b322bd820e374a"
+    },
+    {
+      "file": "meta.svg",
+      "source": "https://aihot.news/model-providers/meta.svg",
+      "sha256": "e688b9947034e5a1a6e43435da3cd5eeb0d1102290679903dc96c6d43447a99b"
+    },
+    {
+      "file": "minimax.svg",
+      "source": "https://aihot.news/model-providers/minimax.svg",
+      "sha256": "d066ca12e8cfb12c0027be49ea22e06bb62d382f5b3836ff01b9f18af01154ba"
+    },
+    {
+      "file": "mistral.svg",
+      "source": "https://aihot.news/model-providers/mistral.svg",
+      "sha256": "cc39e69a73c3140bdded7ec5775579c185eacccdef43a0f94474bcf7231cb0fc"
+    },
+    {
+      "file": "moonshot.svg",
+      "source": "https://aihot.news/model-providers/moonshot.svg",
+      "sha256": "8149f95f8513573da9bcffb79a1b800c856e054d97633c8c43b6cd9ebe7b7859"
+    },
+    {
+      "file": "nvidia.svg",
+      "source": "https://aihot.news/model-providers/nvidia.svg",
+      "sha256": "0cc710e73dc41650ae2178e9ab1617108ed70a3ad7f2d40db363d30bfad4cda9"
+    },
+    {
+      "file": "openai.svg",
+      "source": "https://aihot.news/model-providers/openai.svg",
+      "sha256": "802335af1ddb4e135468f689aabe7ac7798a3177c1b71bbd4549fc602e9264ed"
+    },
+    {
+      "file": "qianwen.svg",
+      "source": "https://aihot.news/model-providers/qianwen.svg",
+      "sha256": "3abbbb05dfde555971fb944880d1dfe85d2e97a795fa3fe4e96fa1a5912a0364"
+    },
+    {
+      "file": "stepfun.svg",
+      "source": "https://aihot.news/model-providers/stepfun.svg",
+      "sha256": "f55afc0e6004c8854f76bd5bbcc0fce9fc0ed9316691d54fb02d088c24fab40d"
+    },
+    {
+      "file": "thinking-machines.png",
+      "source": "https://aihot.news/model-providers/thinking-machines.png",
+      "sha256": "ef907e01669290064ce1db3d7902203fb2786dc110d2c496a8a02ad912d32e7e"
+    },
+    {
+      "file": "xai.svg",
+      "source": "https://aihot.news/model-providers/xai.svg",
+      "sha256": "0410d14cf99a22d55d34712e9db5e4d0b8b156baa31e7d8c561848847e542edc"
+    },
+    {
+      "file": "xiaomi-mimo.svg",
+      "source": "https://aihot.news/model-providers/xiaomi-mimo.svg",
+      "sha256": "b04ad7dad52af2212c4567daf0ee6856f2c4625c92c680a27f9880295d558b71"
+    },
+    {
+      "file": "z-ai.svg",
+      "source": "https://aihot.news/model-providers/z-ai.svg",
+      "sha256": "3a0e993946e43e227f10414df38c29b9eae247218dd750815595583485d1beb1"
+    }
+  ]
+}
