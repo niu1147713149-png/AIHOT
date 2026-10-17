@@ -3,12 +3,38 @@ import assert from "node:assert/strict";
 import { after, test } from "node:test";
 import Fastify from "fastify";
 import { sql, closeDb } from "@aihot/backend/db";
+import { config } from "@aihot/backend/config";
 import { readReferenceSnapshot } from "@aihot/backend/publication/reference-snapshots";
-import { refresh, retryDelay } from "../backend/sync.ts";
+import { refresh, retryDelay, syncEnabled, syncLeaderboard, syncResets } from "../backend/sync.ts";
 import { registerTools } from "../api/routes.ts";
 import { resets } from "./fixtures.ts";
 
 after(closeDb);
+test("sync remains enabled at a deployed address and still requires both explicit switches", async () => {
+  const originalUrl = config.siteUrl;
+  const originalTools = process.env.AI_TOOLS_SYNC_ENABLED;
+  const originalCollect = process.env.COLLECT_ENABLED;
+  try {
+    config.siteUrl = "http://203.0.113.10:13080";
+    process.env.AI_TOOLS_SYNC_ENABLED = "true";
+    process.env.COLLECT_ENABLED = "true";
+    assert.equal(syncEnabled(), true);
+    for (const key of ["AI_TOOLS_SYNC_ENABLED", "COLLECT_ENABLED"] as const) {
+      for (const value of [undefined, "false", "TRUE"]) {
+        if (value === undefined) delete process.env[key]; else process.env[key] = value;
+        assert.equal(syncEnabled(), false);
+        assert.deepEqual(await syncLeaderboard(), { status: "disabled" });
+        assert.deepEqual(await syncResets(), { status: "disabled" });
+      }
+      process.env[key] = "true";
+    }
+  } finally {
+    config.siteUrl = originalUrl;
+    if (originalTools === undefined) delete process.env.AI_TOOLS_SYNC_ENABLED; else process.env.AI_TOOLS_SYNC_ENABLED = originalTools;
+    if (originalCollect === undefined) delete process.env.COLLECT_ENABLED; else process.env.COLLECT_ENABLED = originalCollect;
+  }
+});
+
 test("snapshot refresh handles ETags, polling limits, failures, Retry-After and source removal", async () => {
   const source = { key: "test.snapshot", url: "https://example.org/public", interval: 600000, parse: JSON.parse };
   const start = Date.parse("2026-10-14T00:00:00Z"); let hits = 0;

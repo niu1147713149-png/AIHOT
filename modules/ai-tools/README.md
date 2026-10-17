@@ -1,6 +1,6 @@
 # 模型榜与 Tibo 重置监控
 
-为 AIVANE 本地个人使用增加的参考工具，入口在桌面侧栏“工具”和手机“我的”，手机底栏另有“模型榜”。使用本站品牌和界面；AIHOT 仅作为明确标注的数据来源。
+为 AIVANE 增加的参考工具，支持本机和服务器部署，入口在桌面侧栏“工具”和手机“我的”，手机底栏另有“模型榜”。使用本站品牌和界面；AIHOT 仅作为明确标注的数据来源。
 
 本机部署与测试结果见 [2026-10-14 验收记录](../../docs/ai-tools-validation-20261014.md)。
 
@@ -16,7 +16,7 @@
 
 ## 数据与同步
 
-17 个厂商图标固定保存在 `assets/model-providers/`，由 `brands.ts` 按厂商匹配；新增厂商未匹配时显示首字母。表格、待排名列表、模型详情和斩杀线共用图标组件。文件通过模块静态路由与项目 `sendFile` 发送，限制在清单内，不接受快照中的任意图片地址。来源、获取日期和文件校验值在 `assets/model-providers/sources.json`；Tibo 头像来源在 `assets/tibo-source.json`。这些标识用于本机个人参考，品牌权利归各自所有者，未声明第三方资产属于本仓库许可证。
+17 个厂商图标固定保存在 `assets/model-providers/`，由 `brands.ts` 按厂商匹配；新增厂商未匹配时显示首字母。表格、待排名列表、模型详情和斩杀线共用图标组件。文件通过模块静态路由与项目 `sendFile` 发送，限制在清单内，不接受快照中的任意图片地址。来源、获取日期和文件校验值在 `assets/model-providers/sources.json`；Tibo 头像来源在 `assets/tibo-source.json`。这些标识用于辨识来源和厂商，品牌权利归各自所有者，未声明第三方资产属于本仓库许可证。
 
 本轮视觉对照与验证见 [界面对齐记录](../../docs/ai-tools-fidelity-20261014.md)。
 
@@ -34,7 +34,7 @@ worker 每小时第 7 分钟检查榜单，每 10 分钟检查重置；数据库
 
 ## 启停
 
-默认 `AI_TOOLS_SYNC_ENABLED=false`。按 [部署说明](../../docs/deploy.md) 迁移并启动后，在本地 `.env` 设置：
+默认 `AI_TOOLS_SYNC_ENABLED=false`。按 [部署说明](../../docs/deploy.md) 迁移并启动后，在部署环境的 `.env` 设置：
 
 ```dotenv
 AI_TOOLS_SYNC_ENABLED=true
@@ -43,7 +43,7 @@ SITE_URL=http://localhost:3080
 PORT=127.0.0.1:3080
 ```
 
-仅 `SITE_URL` 主机为 localhost / 127.0.0.1 / [::1] 时启用；无需修改模型配置。api / worker 重启后，可用下列命令首次填充快照：
+服务器部署时把 `SITE_URL` 改为读者实际访问的 IP 或域名，端口按部署方式配置；更改地址不会停用同步，无需修改模型配置。重新创建应用容器加载环境变量后，可用下列命令首次填充快照：
 
 ```bash
 docker compose exec -T api node modules/ai-tools/scripts/sync.ts
@@ -51,11 +51,11 @@ docker compose exec -T api node modules/ai-tools/scripts/sync.ts
 
 重复执行会跳过尚未到期的数据。在后台“运行”页检查 `ai-tools.leaderboard` 与 `ai-tools.codex-reset`；若页面无数据，依次核对迁移、两个开关、SITE_URL、worker 状态与来源错误。切勿把重置监控中的日期当作用户账号的额度承诺。
 
-关闭 `AI_TOOLS_SYNC_ENABLED` 并重启 api / worker 会停止同步，已存快照仍显示。公开部署前需取消本站模块注册、依赖与 Dockerfile 对应项并重建，或先另行取得数据授权和设计对外读取方式；仅更改 SITE_URL 不会删除已缓存数据。
+关闭 `AI_TOOLS_SYNC_ENABLED` 并重新创建 api / worker 会停止同步，已存快照仍显示。前台页面和快照接口无需登录，管理后台继续使用原有管理员鉴权；同步开关不承担访问控制。更改 `SITE_URL` 不会删除已缓存数据。
 
 ## 范围与验证
 
-本模块不复刻原站私有评分引擎、不批量复制模型原始评测、不独立采集 X、不查询私人额度、不执行重置，也未配置外部通知。来源页面格式变化可能需要更新解析器。个人参考缓存不等于获得商业再分发许可。
+本模块不复刻原站私有评分引擎、不批量复制模型原始评测、不独立采集 X、不查询私人额度、不执行重置，也未配置外部通知。来源页面格式变化可能需要更新解析器。读取公开数据不等于获得商业再分发许可。
 
 `tests/data.standalone.test.ts` 使用合成数据验证解析、排名、成本、日期、更正撤回与公告状态；`tests/sync.test.ts` 使用隔离测试库和假 fetch 验证缓存、限频、并发、失败与删除。纳入根目录 `npm test`；不读取生产库和密钥，不请求真实来源。仓库必需检查见 [AGENTS.md](../../AGENTS.md)。
 

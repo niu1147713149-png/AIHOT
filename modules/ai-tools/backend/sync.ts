@@ -1,5 +1,4 @@
 import { sql } from "@aihot/backend/db";
-import { config } from "@aihot/backend/config";
 import { parseLeaderboard } from "./parse.ts";
 import { resetsSchema } from "./schema.ts";
 
@@ -8,8 +7,7 @@ export const SOURCES = {
   history: { key: "ai-tools.reset-history", url: "https://aihot.news/api/v1/codex-resets", interval: 24 * 3600000, parse: (text: string) => resetsSchema.parse(JSON.parse(text)) },
   recent: { key: "ai-tools.reset-recent", url: "https://aihot.news/api/v1/codex-resets/recent", interval: 10 * 60000, parse: (text: string) => resetsSchema.parse(JSON.parse(text)) },
 } as const;
-export const syncEnabled = () => process.env.AI_TOOLS_SYNC_ENABLED === "true" && process.env.COLLECT_ENABLED === "true"
-  && ["localhost", "127.0.0.1", "[::1]"].includes(new URL(config.siteUrl).hostname);
+export const syncEnabled = () => process.env.AI_TOOLS_SYNC_ENABLED === "true" && process.env.COLLECT_ENABLED === "true";
 
 export function retryDelay(value: string | null, now: number, minimum: number) {
   if (!value) return minimum;
@@ -54,7 +52,7 @@ export async function refresh(source: { key: string; url: string; interval: numb
     };
     try {
       const response = await fetcher(source.url, { headers: { accept: source.key.endsWith("leaderboard") ? "text/html" : "application/json",
-        "user-agent": "AI-Opportunity-Radar/1.0 (local personal reference reader)",
+        "user-agent": "AIVANE/1.0 (reference snapshots)",
         ...(previous?.etag && previous?.data ? { "if-none-match": String(previous.etag) } : {}) },
         redirect: "error", signal: AbortSignal.timeout(30000) });
       next = new Date(now.getTime() + retryDelay(response.headers.get("retry-after"), now.getTime(), source.interval));
