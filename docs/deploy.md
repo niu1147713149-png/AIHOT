@@ -1,5 +1,18 @@
 # 部署
 
+## Skills 市场更新（2026-10-15）
+
+新增独立模块及 0087–0089 三个迁移，只创建 Skills 目录、指标与来源状态表，不改动原有资讯数据。更新前备份数据库与 `.env`，更新镜像后先运行迁移，再导入首批目录。后台 `/admin/skills` 支持“加载首批清单 → 预览 → 确认”，也可用以下命令：
+
+```bash
+docker compose run --rm --no-deps api node scripts/migrate.ts
+docker compose run --rm --no-deps api node modules/skills-market/scripts/import.ts
+docker compose run --rm --no-deps api node modules/skills-market/scripts/import.ts --apply
+docker compose up -d --no-deps api web
+```
+
+导入按仓库与文件路径去重，重跑不会覆盖已有编辑。只预览本地目录时，让 `COLLECT_ENABLED`、`MODEL_CALLS_ENABLED`、`SKILLS_MARKET_SYNC_ENABLED` 保持 `false`，不用启动 worker。需要每日更新 GitHub 元数据时才显式启用采集总开关和模块开关；此同步不使用模型，也不更新 skills.sh 安装榜。回退旧应用镜像可保留新增表和数据，恢复时无需再次采集。模块使用与数据口径见 [Skills 市场 README](../modules/skills-market/README.md)。
+
 ## 用 Docker（推荐）
 
 需要一台装了 Docker（带 Compose）的机器。云服务器建议至少 2 核、4 GB 内存，构建镜像时要用到。

@@ -1,0 +1,1866 @@
+[
+  {
+    "repo": "vercel-labs/agent-skills",
+    "path": "skills/react-best-practices/SKILL.md",
+    "data": {
+      "name": "vercel-react-best-practices",
+      "title": "React 性能优化",
+      "summary": "围绕 React 与 Next.js 的渲染、数据获取和资源加载，帮助定位性能问题并整理可执行的修改。",
+      "originalDescription": "React and Next.js performance optimization guidelines from Vercel Engineering. This skill should be used when writing, reviewing, or refactoring React/Next.js code to ensure optimal performance patterns. Triggers on tasks involving React components, Next.js pages, data fetching, bundle optimization, or performance improvements.",
+      "category": "development",
+      "tasks": [
+        "审查页面渲染瓶颈",
+        "减少串行数据请求"
+      ],
+      "example": "检查这个 Next.js 商品页的加载过程，按影响大小列出三项优化，并说明如何验证。",
+      "dependencies": [
+        "Node.js、Git 与已配置可用的目标 Agent 客户端。",
+        "需要相关项目或任务材料；特定工具和关联 Skills 以原始文档为准。"
+      ],
+      "clients": [
+        {
+          "id": "codex",
+          "note": "Skills CLI 提供安装入口；当前未在该客户端实测，需核对原文的工具和关联 Skill 依赖。"
+        },
+        {
+          "id": "claude-code",
+          "note": "Skills CLI 提供安装入口；当前未在该客户端实测，需核对原文的工具和关联 Skill 依赖。"
+        }
+      ],
+      "recommendation": "适合为客户维护网站的小团队，能把性能排查转为具体修改项。",
+      "author": "Vercel",
+      "license": {
+        "name": "MIT",
+        "url": "https://github.com/vercel-labs/agent-skills/blob/063bee94c3f4df8453406c830b0a7df0f2860278/skills/react-best-practices/SKILL.md"
+      },
+      "homepage": null,
+      "verification": {
+        "commit": "063bee94c3f4df8453406c830b0a7df0f2860278",
+        "contentHash": "71ed7794962fa6e803ee83030517b5b93a9f70fbfeb431ec4535c5480a8d8355",
+        "checkedAt": "2026-10-15T13:14:03.038584+00:00",
+        "installDocUrl": "https://github.com/vercel-labs/skills#readme"
+      }
+    },
+    "metric": {
+      "source": "skills.sh",
+      "metric": "installs",
+      "window": "all-time",
+      "displayValue": "803.3K",
+      "rank": 23,
+      "sourceUrl": "https://skills.sh/vercel-labs/agent-skills/vercel-react-best-practices",
+      "observedAt": "2026-10-15T09:27:46.236194+00:00"
+    },
+    "repository": {
+      "data": {
+        "stars": 32463,
+        "pushedAt": "2026-10-14T17:58:45Z",
+        "archived": false
+      },
+      "checkedAt": "2026-10-15T13:08:07.532492+00:00"
+    }
+  },
+  {
+    "repo": "vercel-labs/agent-skills",
+    "path": "skills/composition-patterns/SKILL.md",
+    "data": {
+      "name": "vercel-composition-patterns",
+      "title": "React 组件组合",
+      "summary": "梳理组件的组合方式，减少过多布尔参数与难维护的分支，设计可复用的组件接口。",
+      "originalDescription": "React composition patterns that scale. Use when refactoring components with boolean prop proliferation, building flexible component libraries, or designing reusable APIs. Triggers on tasks involving compound components, render props, context providers, or component architecture. Includes React 19 API changes.",
+      "category": "development",
+      "tasks": [
+        "重构复杂组件接口",
+        "设计组合式组件"
+      ],
+      "example": "将这个拥有多个布尔参数的弹窗组件改为组合 API，并保留现有行为。",
+      "dependencies": [
+        "Node.js、Git 与已配置可用的目标 Agent 客户端。",
+        "需要相关项目或任务材料；特定工具和关联 Skills 以原始文档为准。"
+      ],
+      "clients": [
+        {
+          "id": "codex",
+          "note": "Skills CLI 提供安装入口；当前未在该客户端实测，需核对原文的工具和关联 Skill 依赖。"
+        },
+        {
+          "id": "claude-code",
+          "note": "Skills CLI 提供安装入口；当前未在该客户端实测，需核对原文的工具和关联 Skill 依赖。"
+        }
+      ],
+      "recommendation": "",
+      "author": "Vercel",
+      "license": {
+        "name": "MIT",
+        "url": "https://github.com/vercel-labs/agent-skills/blob/063bee94c3f4df8453406c830b0a7df0f2860278/skills/composition-patterns/SKILL.md"
+      },
+      "homepage": null,
+      "verification": {
+        "commit": "063bee94c3f4df8453406c830b0a7df0f2860278",
+        "contentHash": "e38e0eaa609316b10423a9a138ed95e35099accd3f735585295c8a8f165c28a3",
+        "checkedAt": "2026-10-15T13:14:02.160725+00:00",
+        "installDocUrl": "https://github.com/vercel-labs/skills#readme"
+      }
+    },
+    "metric": {
+      "source": "skills.sh",
+      "metric": "installs",
+      "window": "all-time",
+      "displayValue": "394.9K",
+      "rank": 178,
+      "sourceUrl": "https://skills.sh/vercel-labs/agent-skills/vercel-composition-patterns",
+      "observedAt": "2026-10-15T09:27:46.236194+00:00"
+    },
+    "repository": {
+      "data": {
+        "stars": 32463,
+        "pushedAt": "2026-10-14T17:58:45Z",
+        "archived": false
+      },
+      "checkedAt": "2026-10-15T13:08:07.532492+00:00"
+    }
+  },
+  {
+    "repo": "vercel-labs/agent-skills",
+    "path": "skills/web-design-guidelines/SKILL.md",
+    "data": {
+      "name": "web-design-guidelines",
+      "title": "网页设计与可访问性审查",
+      "summary": "对照 Web Interface Guidelines 检查界面代码，发现交互、可访问性和体验问题。",
+      "originalDescription": "Review UI code for Web Interface Guidelines compliance. Use when asked to \"review my UI\", \"check accessibility\", \"audit design\", \"review UX\", or \"check my site against best practices\".",
+      "category": "design",
+      "tasks": [
+        "检查表单可访问性",
+        "审查界面交互细节"
+      ],
+      "example": "检查这个预约表单的键盘操作、错误反馈和手机布局，给出按优先级排列的问题。",
+      "dependencies": [
+        "Node.js、Git 与已配置可用的目标 Agent 客户端。",
+        "需要相关项目或任务材料；特定工具和关联 Skills 以原始文档为准。"
+      ],
+      "clients": [
+        {
+          "id": "codex",
+          "note": "Skills CLI 提供安装入口；当前未在该客户端实测，需核对原文的工具和关联 Skill 依赖。"
+        },
+        {
+          "id": "claude-code",
+          "note": "Skills CLI 提供安装入口；当前未在该客户端实测，需核对原文的工具和关联 Skill 依赖。"
+        }
+      ],
+      "recommendation": "适合交付前做一次有依据的网页体验检查。",
+      "author": "Vercel",
+      "license": {
+        "name": "待核对",
+        "url": null
+      },
+      "homepage": null,
+      "verification": {
+        "commit": "063bee94c3f4df8453406c830b0a7df0f2860278",
+        "contentHash": "f4647ca866a3accf763777f83e7682954f0187cd6bea7eea0399796652414e8f",
+        "checkedAt": "2026-10-15T13:14:01.820430+00:00",
+        "installDocUrl": "https://github.com/vercel-labs/skills#readme"
+      }
+    },
+    "metric": {
+      "source": "skills.sh",
+      "metric": "installs",
+      "window": "all-time",
+      "displayValue": "738.9K",
+      "rank": 54,
+      "sourceUrl": "https://skills.sh/vercel-labs/agent-skills/web-design-guidelines",
+      "observedAt": "2026-10-15T09:27:46.236194+00:00"
+    },
+    "repository": {
+      "data": {
+        "stars": 32463,
+        "pushedAt": "2026-10-14T17:58:45Z",
+        "archived": false
+      },
+      "checkedAt": "2026-10-15T13:08:07.532492+00:00"
+    }
+  },
+  {
+    "repo": "vercel-labs/agent-skills",
+    "path": "skills/react-native-skills/SKILL.md",
+    "data": {
+      "name": "vercel-react-native-skills",
+      "title": "React Native 移动开发",
+      "summary": "提供 React Native 与 Expo 的开发建议，涵盖列表性能、动画和原生模块使用。",
+      "originalDescription": "React Native and Expo best practices for building performant mobile apps. Use when building React Native components, optimizing list performance, implementing animations, or working with native modules. Triggers on tasks involving React Native, Expo, mobile performance, or native platform APIs.",
+      "category": "development",
+      "tasks": [
+        "优化长列表",
+        "检查移动端动画"
+      ],
+      "example": "检查这个 Expo 订单列表的滚动性能，指出不必要的渲染并给出修改。",
+      "dependencies": [
+        "Node.js、Git 与已配置可用的目标 Agent 客户端。",
+        "需要相关项目或任务材料；特定工具和关联 Skills 以原始文档为准。"
+      ],
+      "clients": [
+        {
+          "id": "codex",
+          "note": "Skills CLI 提供安装入口；当前未在该客户端实测，需核对原文的工具和关联 Skill 依赖。"
+        },
+        {
+          "id": "claude-code",
+          "note": "Skills CLI 提供安装入口；当前未在该客户端实测，需核对原文的工具和关联 Skill 依赖。"
+        }
+      ],
+      "recommendation": "",
+      "author": "Vercel",
+      "license": {
+        "name": "MIT",
+        "url": "https://github.com/vercel-labs/agent-skills/blob/063bee94c3f4df8453406c830b0a7df0f2860278/skills/react-native-skills/SKILL.md"
+      },
+      "homepage": null,
+      "verification": {
+        "commit": "063bee94c3f4df8453406c830b0a7df0f2860278",
+        "contentHash": "4012750a5ccbe064ca04af3835d5d1b011979d2d09d9b6df1c8128fac58e0a66",
+        "checkedAt": "2026-10-15T13:14:01.878780+00:00",
+        "installDocUrl": "https://github.com/vercel-labs/skills#readme"
+      }
+    },
+    "metric": {
+      "source": "skills.sh",
+      "metric": "installs",
+      "window": "all-time",
+      "displayValue": "241.4K",
+      "rank": 268,
+      "sourceUrl": "https://skills.sh/vercel-labs/agent-skills/vercel-react-native-skills",
+      "observedAt": "2026-10-15T09:27:46.236194+00:00"
+    },
+    "repository": {
+      "data": {
+        "stars": 32463,
+        "pushedAt": "2026-10-14T17:58:45Z",
+        "archived": false
+      },
+      "checkedAt": "2026-10-15T13:08:07.532492+00:00"
+    }
+  },
+  {
+    "repo": "anthropics/skills",
+    "path": "skills/frontend-design/SKILL.md",
+    "data": {
+      "name": "frontend-design",
+      "title": "前端界面设计",
+      "summary": "帮助建立清晰的视觉方向，围绕排版、布局和风格完成有辨识度的前端界面。",
+      "originalDescription": "Guidance for distinctive, intentional visual design when building new UI or reshaping an existing one. Helps with aesthetic direction, typography, and making choices that don't read as templated defaults.",
+      "category": "design",
+      "tasks": [
+        "设计产品界面",
+        "改进现有页面视觉"
+      ],
+      "example": "为本地家政服务设计预约页面，优先保证手机填写顺畅，并给出可运行的页面。",
+      "dependencies": [
+        "Node.js、Git 与已配置可用的目标 Agent 客户端。",
+        "需要相关项目或任务材料；特定工具和关联 Skills 以原始文档为准。"
+      ],
+      "clients": [
+        {
+          "id": "codex",
+          "note": "该资料以 Claude 工作流为背景，安装器支持 Codex；工具调用和文档脚本兼容性尚未实测。"
+        },
+        {
+          "id": "claude-code",
+          "note": "Skills CLI 提供安装入口；当前未在该客户端实测，需核对原文的工具和关联 Skill 依赖。"
+        }
+      ],
+      "recommendation": "适合小团队制作产品原型与客户演示。",
+      "author": "Anthropic",
+      "license": {
+        "name": "Apache-2.0",
+        "url": "https://github.com/anthropics/skills/blob/dbd4588f9e1033efb41dad4bef2f7947c8993d44/skills/frontend-design/LICENSE.txt"
+      },
+      "homepage": null,
+      "verification": {
+        "commit": "dbd4588f9e1033efb41dad4bef2f7947c8993d44",
+        "contentHash": "d91970639e9f5c37682ac7ab60094d35f1c7c1f38d731bd56396563aee10c1d3",
+        "checkedAt": "2026-10-15T13:14:04.384189+00:00",
+        "installDocUrl": "https://github.com/vercel-labs/skills#readme"
+      }
+    },
+    "metric": {
+      "source": "skills.sh",
+      "metric": "installs",
+      "window": "all-time",
+      "displayValue": "989.3K",
+      "rank": 9,
+      "sourceUrl": "https://skills.sh/anthropics/skills/frontend-design",
+      "observedAt": "2026-10-15T09:27:46.236194+00:00"
+    },
+    "repository": {
+      "data": {
+        "stars": 181285,
+        "pushedAt": "2026-10-09T18:45:52Z",
+        "archived": false
+      },
+      "checkedAt": "2026-10-15T13:08:04.484590+00:00"
+    }
+  },
+  {
+    "repo": "anthropics/skills",
+    "path": "skills/skill-creator/SKILL.md",
+    "data": {
+      "name": "skill-creator",
+      "title": "创建与改进 Skill",
+      "summary": "把重复工作整理成 Skill，并通过评估案例检查触发条件、说明和执行效果。",
+      "originalDescription": "Create new skills, modify and improve existing skills, and measure skill performance. Use when users want to create a skill from scratch, edit, or optimize an existing skill, run evals to test a skill, benchmark skill performance with variance analysis, or optimize a skill's description for better triggering accuracy.",
+      "category": "automation",
+      "tasks": [
+        "整理可复用工作流",
+        "为 Skill 编写评估案例"
+      ],
+      "example": "把每周整理客户反馈的流程写成 Skill，再用三组输入检查是否稳定。",
+      "dependencies": [
+        "Node.js、Git 与已配置可用的目标 Agent 客户端。",
+        "需要相关项目或任务材料；特定工具和关联 Skills 以原始文档为准。"
+      ],
+      "clients": [
+        {
+          "id": "codex",
+          "note": "该资料以 Claude 工作流为背景，安装器支持 Codex；工具调用和文档脚本兼容性尚未实测。"
+        },
+        {
+          "id": "claude-code",
+          "note": "Skills CLI 提供安装入口；当前未在该客户端实测，需核对原文的工具和关联 Skill 依赖。"
+        }
+      ],
+      "recommendation": "适合把反复交付的服务流程沉淀为团队工具。",
+      "author": "Anthropic",
+      "license": {
+        "name": "Apache-2.0",
+        "url": "https://github.com/anthropics/skills/blob/dbd4588f9e1033efb41dad4bef2f7947c8993d44/skills/skill-creator/LICENSE.txt"
+      },
+      "homepage": null,
+      "verification": {
+        "commit": "dbd4588f9e1033efb41dad4bef2f7947c8993d44",
+        "contentHash": "dcd4803e61e913e6fc27294184cd3a71f09f5e924ff20c8a9a20173e7b3c2bcf",
+        "checkedAt": "2026-10-15T13:14:06.998709+00:00",
+        "installDocUrl": "https://github.com/vercel-labs/skills#readme"
+      }
+    },
+    "metric": {
+      "source": "skills.sh",
+      "metric": "installs",
+      "window": "all-time",
+      "displayValue": "406.1K",
+      "rank": 168,
+      "sourceUrl": "https://skills.sh/anthropics/skills/skill-creator",
+      "observedAt": "2026-10-15T09:27:46.236194+00:00"
+    },
+    "repository": {
+      "data": {
+        "stars": 181285,
+        "pushedAt": "2026-10-09T18:45:52Z",
+        "archived": false
+      },
+      "checkedAt": "2026-10-15T13:08:04.484590+00:00"
+    }
+  },
+  {
+    "repo": "anthropics/skills",
+    "path": "skills/webapp-testing/SKILL.md",
+    "data": {
+      "name": "webapp-testing",
+      "title": "网页自动化测试",
+      "summary": "使用 Playwright 与本地网页交互，检查功能、定位界面问题并留存截图与浏览器日志。",
+      "originalDescription": "Toolkit for interacting with and testing local web applications using Playwright. Supports verifying frontend functionality, debugging UI behavior, capturing browser screenshots, and viewing browser logs.",
+      "category": "automation",
+      "tasks": [
+        "验证关键页面流程",
+        "收集浏览器截图与日志"
+      ],
+      "example": "测试本地报价单工具的新增、编辑和导出流程，记录失败步骤与截图。",
+      "dependencies": [
+        "Node.js、Git 与已配置可用的目标 Agent 客户端。",
+        "需要可访问的本地网页及 Playwright 浏览器环境。"
+      ],
+      "clients": [
+        {
+          "id": "codex",
+          "note": "该资料以 Claude 工作流为背景，安装器支持 Codex；工具调用和文档脚本兼容性尚未实测。"
+        },
+        {
+          "id": "claude-code",
+          "note": "Skills CLI 提供安装入口；当前未在该客户端实测，需核对原文的工具和关联 Skill 依赖。"
+        }
+      ],
+      "recommendation": "适合给客户交付网页前验证关键操作。",
+      "author": "Anthropic",
+      "license": {
+        "name": "Apache-2.0",
+        "url": "https://github.com/anthropics/skills/blob/dbd4588f9e1033efb41dad4bef2f7947c8993d44/skills/webapp-testing/LICENSE.txt"
+      },
+      "homepage": null,
+      "verification": {
+        "commit": "dbd4588f9e1033efb41dad4bef2f7947c8993d44",
+        "contentHash": "51b7349e77ec63b7744a6f63647e7566a0b4d2e301121cc10e8c2113af6556a2",
+        "checkedAt": "2026-10-15T13:14:06.493735+00:00",
+        "installDocUrl": "https://github.com/vercel-labs/skills#readme"
+      }
+    },
+    "metric": null,
+    "repository": {
+      "data": {
+        "stars": 181285,
+        "pushedAt": "2026-10-09T18:45:52Z",
+        "archived": false
+      },
+      "checkedAt": "2026-10-15T13:08:04.484590+00:00"
+    }
+  },
+  {
+    "repo": "anthropics/skills",
+    "path": "skills/mcp-builder/SKILL.md",
+    "data": {
+      "name": "mcp-builder",
+      "title": "MCP 服务开发",
+      "summary": "指导开发 MCP 服务，将外部 API 或内部业务能力整理为 Agent 可以调用的工具。",
+      "originalDescription": "Guide for creating high-quality MCP (Model Context Protocol) servers that enable LLMs to interact with external services through well-designed tools. Use when building MCP servers to integrate external APIs or services, whether in Python (FastMCP) or Node/TypeScript (MCP SDK).",
+      "category": "automation",
+      "tasks": [
+        "设计 MCP 工具接口",
+        "连接业务 API"
+      ],
+      "example": "为现有库存查询 API 设计只读 MCP 工具，包含参数校验与错误返回。",
+      "dependencies": [
+        "Node.js、Git 与已配置可用的目标 Agent 客户端。",
+        "需要目标 API 的文档与授权，以及对应 Python 或 Node.js 开发环境。"
+      ],
+      "clients": [
+        {
+          "id": "codex",
+          "note": "该资料以 Claude 工作流为背景，安装器支持 Codex；工具调用和文档脚本兼容性尚未实测。"
+        },
+        {
+          "id": "claude-code",
+          "note": "Skills CLI 提供安装入口；当前未在该客户端实测，需核对原文的工具和关联 Skill 依赖。"
+        }
+      ],
+      "recommendation": "适合将已有业务系统接入 AI 工作流。",
+      "author": "Anthropic",
+      "license": {
+        "name": "Apache-2.0",
+        "url": "https://github.com/anthropics/skills/blob/dbd4588f9e1033efb41dad4bef2f7947c8993d44/skills/mcp-builder/LICENSE.txt"
+      },
+      "homepage": null,
+      "verification": {
+        "commit": "dbd4588f9e1033efb41dad4bef2f7947c8993d44",
+        "contentHash": "0f4592dcb53cf2b5d6b7febee6b4152018b565551a1c29e3c612f57b218ab295",
+        "checkedAt": "2026-10-15T13:14:06.065272+00:00",
+        "installDocUrl": "https://github.com/vercel-labs/skills#readme"
+      }
+    },
+    "metric": null,
+    "repository": {
+      "data": {
+        "stars": 181285,
+        "pushedAt": "2026-10-09T18:45:52Z",
+        "archived": false
+      },
+      "checkedAt": "2026-10-15T13:08:04.484590+00:00"
+    }
+  },
+  {
+    "repo": "anthropics/skills",
+    "path": "skills/docx/SKILL.md",
+    "data": {
+      "name": "docx",
+      "title": "Word 文档处理",
+      "summary": "创建、读取和编辑 Word 文档及模板，适合结构化报告、提案和带格式的交付材料。",
+      "originalDescription": "Use this skill whenever the user wants to create, read, edit, or manipulate Word documents (.docx files) or Word templates (.dotx files). Triggers include: any mention of 'Word doc', 'word document', '.docx', '.dotx', or requests to produce professional documents with formatting like tables of contents, headings, page numbers, or letterheads. Also use when extracting or reorganizing content from .docx or .dotx files, inserting or replacing images in documents, performing find-and-replace in Word files, working with tracked changes or comments, or converting content into a polished Word document. If the user asks for a 'report', 'memo', 'letter', 'template', or similar deliverable as a Word or .docx file, use this skill. Do NOT use for PDFs, spreadsheets, Google Docs, or general coding tasks unrelated to document generation.",
+      "category": "office",
+      "tasks": [
+        "生成业务提案",
+        "修改 Word 模板"
+      ],
+      "example": "根据服务清单生成一份客户提案 Word 文档，包含范围、交付时间和报价表。",
+      "dependencies": [
+        "Node.js、Git 与已配置可用的目标 Agent 客户端。",
+        "根据任务安装原始文档列出的 Python / Node.js 库及文档处理工具。",
+        "开始使用前核对该 Skill 的专有许可与使用限制。"
+      ],
+      "clients": [
+        {
+          "id": "codex",
+          "note": "该资料以 Claude 工作流为背景，安装器支持 Codex；工具调用和文档脚本兼容性尚未实测。"
+        },
+        {
+          "id": "claude-code",
+          "note": "Skills CLI 提供安装入口；当前未在该客户端实测，需核对原文的工具和关联 Skill 依赖。"
+        }
+      ],
+      "recommendation": "适合小团队制作标准化客户交付文档；使用前核对专有许可。",
+      "author": "Anthropic",
+      "license": {
+        "name": "专有 / source-available，见原文条款",
+        "url": "https://github.com/anthropics/skills/blob/dbd4588f9e1033efb41dad4bef2f7947c8993d44/skills/docx/LICENSE.txt"
+      },
+      "homepage": null,
+      "verification": {
+        "commit": "dbd4588f9e1033efb41dad4bef2f7947c8993d44",
+        "contentHash": "8017469ea95fb7d28225c62daf8e2f3492a7b516fc64c18c28977cbf8980b7fe",
+        "checkedAt": "2026-10-15T13:14:09.593968+00:00",
+        "installDocUrl": "https://github.com/vercel-labs/skills#readme"
+      }
+    },
+    "metric": null,
+    "repository": {
+      "data": {
+        "stars": 181285,
+        "pushedAt": "2026-10-09T18:45:52Z",
+        "archived": false
+      },
+      "checkedAt": "2026-10-15T13:08:04.484590+00:00"
+    }
+  },
+  {
+    "repo": "anthropics/skills",
+    "path": "skills/pdf/SKILL.md",
+    "data": {
+      "name": "pdf",
+      "title": "PDF 读取与整理",
+      "summary": "处理 PDF 的文本与表格提取、合并拆分、页面调整和表单填写等任务。",
+      "originalDescription": "Use this skill whenever the user wants to do anything with PDF files. This includes reading or extracting text/tables from PDFs, combining or merging multiple PDFs into one, splitting PDFs apart, rotating pages, adding watermarks, creating new PDFs, filling PDF forms, encrypting/decrypting PDFs, extracting images, and OCR on scanned PDFs to make them searchable. If the user mentions a .pdf file or asks to produce one, use this skill.",
+      "category": "office",
+      "tasks": [
+        "提取 PDF 表格",
+        "合并与拆分文件"
+      ],
+      "example": "把三份供应商报价 PDF 的项目和价格整理为可核对的表格，并保留来源页码。",
+      "dependencies": [
+        "Node.js、Git 与已配置可用的目标 Agent 客户端。",
+        "根据任务安装原始文档列出的 Python / Node.js 库及文档处理工具。",
+        "开始使用前核对该 Skill 的专有许可与使用限制。"
+      ],
+      "clients": [
+        {
+          "id": "codex",
+          "note": "该资料以 Claude 工作流为背景，安装器支持 Codex；工具调用和文档脚本兼容性尚未实测。"
+        },
+        {
+          "id": "claude-code",
+          "note": "Skills CLI 提供安装入口；当前未在该客户端实测，需核对原文的工具和关联 Skill 依赖。"
+        }
+      ],
+      "recommendation": "",
+      "author": "Anthropic",
+      "license": {
+        "name": "专有 / source-available，见原文条款",
+        "url": "https://github.com/anthropics/skills/blob/dbd4588f9e1033efb41dad4bef2f7947c8993d44/skills/pdf/LICENSE.txt"
+      },
+      "homepage": null,
+      "verification": {
+        "commit": "dbd4588f9e1033efb41dad4bef2f7947c8993d44",
+        "contentHash": "9f78b8359fbd4943ad260a7a1e436e5a96503406d6c34e99f69223d647d85b9c",
+        "checkedAt": "2026-10-15T13:14:08.599246+00:00",
+        "installDocUrl": "https://github.com/vercel-labs/skills#readme"
+      }
+    },
+    "metric": null,
+    "repository": {
+      "data": {
+        "stars": 181285,
+        "pushedAt": "2026-10-09T18:45:52Z",
+        "archived": false
+      },
+      "checkedAt": "2026-10-15T13:08:04.484590+00:00"
+    }
+  },
+  {
+    "repo": "anthropics/skills",
+    "path": "skills/pptx/SKILL.md",
+    "data": {
+      "name": "pptx",
+      "title": "演示文稿制作",
+      "summary": "创建、读取和修改 PowerPoint 文稿及模板，支持提案、产品说明与汇报材料。",
+      "originalDescription": "Use this skill any time a .pptx or .potx file is involved in any way — as input, output, or both. This includes: creating slide decks, pitch decks, or presentations; reading, parsing, or extracting text from any .pptx or .potx file (even if the extracted content will be used elsewhere, like in an email or summary); editing, modifying, or updating existing presentations; combining or splitting slide files; working with templates (.potx), layouts, speaker notes, or comments. Trigger whenever the user mentions \"deck,\" \"slides,\" \"presentation,\" or references a .pptx or .potx filename, regardless of what they plan to do with the content afterward. If a .pptx or .potx file needs to be opened, created, or touched, use this skill.",
+      "category": "office",
+      "tasks": [
+        "制作客户演示",
+        "修改已有幻灯片"
+      ],
+      "example": "把这份自动化方案整理成 8 页客户演示，包含问题、流程、成本和实施步骤。",
+      "dependencies": [
+        "Node.js、Git 与已配置可用的目标 Agent 客户端。",
+        "根据任务安装原始文档列出的 Python / Node.js 库及文档处理工具。",
+        "开始使用前核对该 Skill 的专有许可与使用限制。"
+      ],
+      "clients": [
+        {
+          "id": "codex",
+          "note": "该资料以 Claude 工作流为背景，安装器支持 Codex；工具调用和文档脚本兼容性尚未实测。"
+        },
+        {
+          "id": "claude-code",
+          "note": "Skills CLI 提供安装入口；当前未在该客户端实测，需核对原文的工具和关联 Skill 依赖。"
+        }
+      ],
+      "recommendation": "",
+      "author": "Anthropic",
+      "license": {
+        "name": "专有 / source-available，见原文条款",
+        "url": "https://github.com/anthropics/skills/blob/dbd4588f9e1033efb41dad4bef2f7947c8993d44/skills/pptx/LICENSE.txt"
+      },
+      "homepage": null,
+      "verification": {
+        "commit": "dbd4588f9e1033efb41dad4bef2f7947c8993d44",
+        "contentHash": "a7ff03e2c85b636f55232a6b1555f5dd90216b7a1a359ab289d8364e6acbc6a0",
+        "checkedAt": "2026-10-15T13:14:09.184106+00:00",
+        "installDocUrl": "https://github.com/vercel-labs/skills#readme"
+      }
+    },
+    "metric": {
+      "source": "skills.sh",
+      "metric": "installs",
+      "window": "all-time",
+      "displayValue": "236.2K",
+      "rank": 271,
+      "sourceUrl": "https://skills.sh/anthropics/skills/pptx",
+      "observedAt": "2026-10-15T09:27:46.236194+00:00"
+    },
+    "repository": {
+      "data": {
+        "stars": 181285,
+        "pushedAt": "2026-10-09T18:45:52Z",
+        "archived": false
+      },
+      "checkedAt": "2026-10-15T13:08:04.484590+00:00"
+    }
+  },
+  {
+    "repo": "anthropics/skills",
+    "path": "skills/xlsx/SKILL.md",
+    "data": {
+      "name": "xlsx",
+      "title": "电子表格处理",
+      "summary": "围绕表格文件进行清洗、计算、格式调整和图表制作，适合经营数据与交付表单。",
+      "originalDescription": "Use this skill any time a spreadsheet file is the primary input or output. This means any task where the user wants to: open, read, edit, or fix an existing .xlsx, .xlsm, .xltx, .csv, or .tsv file (e.g., adding columns, computing formulas, formatting, charting, cleaning messy data); create a new spreadsheet from scratch or from other data sources; or convert between tabular file formats. Trigger especially when the user references a spreadsheet file by name or path — even casually (like \"the xlsx in my downloads\") — and wants something done to it or produced from it. Also trigger for cleaning or restructuring messy tabular data files (malformed rows, misplaced headers, junk data) into proper spreadsheets. The deliverable must be a spreadsheet file. Do NOT trigger when the primary deliverable is a Word document, HTML report, standalone Python script, database pipeline, or Google Sheets API integration, even if tabular data is involved.",
+      "category": "office",
+      "tasks": [
+        "整理数据与公式",
+        "制作分析图表"
+      ],
+      "example": "整理这份月度订单表，按客户与产品汇总收入，检查公式并标出缺失数据。",
+      "dependencies": [
+        "Node.js、Git 与已配置可用的目标 Agent 客户端。",
+        "根据任务安装原始文档列出的 Python / Node.js 库及文档处理工具。",
+        "开始使用前核对该 Skill 的专有许可与使用限制。"
+      ],
+      "clients": [
+        {
+          "id": "codex",
+          "note": "该资料以 Claude 工作流为背景，安装器支持 Codex；工具调用和文档脚本兼容性尚未实测。"
+        },
+        {
+          "id": "claude-code",
+          "note": "Skills CLI 提供安装入口；当前未在该客户端实测，需核对原文的工具和关联 Skill 依赖。"
+        }
+      ],
+      "recommendation": "适合处理日常订单、成本和业务统计；使用前核对专有许可。",
+      "author": "Anthropic",
+      "license": {
+        "name": "专有 / source-available，见原文条款",
+        "url": "https://github.com/anthropics/skills/blob/dbd4588f9e1033efb41dad4bef2f7947c8993d44/skills/xlsx/LICENSE.txt"
+      },
+      "homepage": null,
+      "verification": {
+        "commit": "dbd4588f9e1033efb41dad4bef2f7947c8993d44",
+        "contentHash": "6712b39718fe815054abca9c3ee72f989613e6f771c8a5c58f30a65a6c905622",
+        "checkedAt": "2026-10-15T13:14:09.135278+00:00",
+        "installDocUrl": "https://github.com/vercel-labs/skills#readme"
+      }
+    },
+    "metric": null,
+    "repository": {
+      "data": {
+        "stars": 181285,
+        "pushedAt": "2026-10-09T18:45:52Z",
+        "archived": false
+      },
+      "checkedAt": "2026-10-15T13:08:04.484590+00:00"
+    }
+  },
+  {
+    "repo": "anthropics/skills",
+    "path": "skills/doc-coauthoring/SKILL.md",
+    "data": {
+      "name": "doc-coauthoring",
+      "title": "文档协作写作",
+      "summary": "通过收集背景、迭代结构与读者检查，协作完成提案、规格说明和决策文档。",
+      "originalDescription": "Guide users through a structured workflow for co-authoring documentation. Use when user wants to write documentation, proposals, technical specs, decision docs, or similar structured content. This workflow helps users efficiently transfer context, refine content through iteration, and verify the doc works for readers. Trigger when user mentions writing docs, creating proposals, drafting specs, or similar documentation tasks.",
+      "category": "content",
+      "tasks": [
+        "编写实施方案",
+        "完善产品规格"
+      ],
+      "example": "和我一起完成一份企业客服自动化实施方案，先列出还缺哪些业务背景。",
+      "dependencies": [
+        "Node.js、Git 与已配置可用的目标 Agent 客户端。",
+        "需要相关项目或任务材料；特定工具和关联 Skills 以原始文档为准。"
+      ],
+      "clients": [
+        {
+          "id": "codex",
+          "note": "该资料以 Claude 工作流为背景，安装器支持 Codex；工具调用和文档脚本兼容性尚未实测。"
+        },
+        {
+          "id": "claude-code",
+          "note": "Skills CLI 提供安装入口；当前未在该客户端实测，需核对原文的工具和关联 Skill 依赖。"
+        }
+      ],
+      "recommendation": "",
+      "author": "Anthropic",
+      "license": {
+        "name": "待核对",
+        "url": null
+      },
+      "homepage": null,
+      "verification": {
+        "commit": "dbd4588f9e1033efb41dad4bef2f7947c8993d44",
+        "contentHash": "2e47d78846faeea4a56e9809c52700087a15a2155a3f293a3efbaded81398ef4",
+        "checkedAt": "2026-10-15T13:14:10.170699+00:00",
+        "installDocUrl": "https://github.com/vercel-labs/skills#readme"
+      }
+    },
+    "metric": null,
+    "repository": {
+      "data": {
+        "stars": 181285,
+        "pushedAt": "2026-10-09T18:45:52Z",
+        "archived": false
+      },
+      "checkedAt": "2026-10-15T13:08:04.484590+00:00"
+    }
+  },
+  {
+    "repo": "anthropics/skills",
+    "path": "skills/internal-comms/SKILL.md",
+    "data": {
+      "name": "internal-comms",
+      "title": "团队内部沟通",
+      "summary": "按既有格式整理进展汇报、团队更新和内部问答，帮助团队保持清晰的信息同步。",
+      "originalDescription": "A set of resources to help me write all kinds of internal communications, using the formats that my company likes to use. Claude should use this skill whenever asked to write some sort of internal communications (status reports, leadership updates, 3P updates, company newsletters, FAQs, incident reports, project updates, etc.).",
+      "category": "content",
+      "tasks": [
+        "编写项目进展",
+        "整理内部问答"
+      ],
+      "example": "把本周的客户交付记录整理成团队周报，标出阻塞事项与负责人。",
+      "dependencies": [
+        "Node.js、Git 与已配置可用的目标 Agent 客户端。",
+        "需要相关项目或任务材料；特定工具和关联 Skills 以原始文档为准。"
+      ],
+      "clients": [
+        {
+          "id": "codex",
+          "note": "该资料以 Claude 工作流为背景，安装器支持 Codex；工具调用和文档脚本兼容性尚未实测。"
+        },
+        {
+          "id": "claude-code",
+          "note": "Skills CLI 提供安装入口；当前未在该客户端实测，需核对原文的工具和关联 Skill 依赖。"
+        }
+      ],
+      "recommendation": "",
+      "author": "Anthropic",
+      "license": {
+        "name": "Apache-2.0",
+        "url": "https://github.com/anthropics/skills/blob/dbd4588f9e1033efb41dad4bef2f7947c8993d44/skills/internal-comms/LICENSE.txt"
+      },
+      "homepage": null,
+      "verification": {
+        "commit": "dbd4588f9e1033efb41dad4bef2f7947c8993d44",
+        "contentHash": "067b7587a344a928fc6534ef66b1bcd591fc7c26d207ea7ca3334aeb678d6475",
+        "checkedAt": "2026-10-15T13:14:11.926615+00:00",
+        "installDocUrl": "https://github.com/vercel-labs/skills#readme"
+      }
+    },
+    "metric": null,
+    "repository": {
+      "data": {
+        "stars": 181285,
+        "pushedAt": "2026-10-09T18:45:52Z",
+        "archived": false
+      },
+      "checkedAt": "2026-10-15T13:08:04.484590+00:00"
+    }
+  },
+  {
+    "repo": "anthropics/skills",
+    "path": "skills/canvas-design/SKILL.md",
+    "data": {
+      "name": "canvas-design",
+      "title": "静态视觉与海报",
+      "summary": "围绕明确的设计方向创作 PNG 或 PDF 静态视觉，适合海报与展示材料。",
+      "originalDescription": "Create beautiful visual art in .png and .pdf documents using design philosophy. You should use this skill when the user asks to create a poster, piece of art, design, or other static piece. Create original visual designs, never copying existing artists' work to avoid copyright violations.",
+      "category": "design",
+      "tasks": [
+        "制作活动海报",
+        "输出静态视觉"
+      ],
+      "example": "为本地 AI 工具工作坊制作一张中文海报，包含时间、地点与报名方式。",
+      "dependencies": [
+        "Node.js、Git 与已配置可用的目标 Agent 客户端。",
+        "字体、绘图或浏览器运行环境以原始 SKILL.md 的任务要求为准。"
+      ],
+      "clients": [
+        {
+          "id": "codex",
+          "note": "该资料以 Claude 工作流为背景，安装器支持 Codex；工具调用和文档脚本兼容性尚未实测。"
+        },
+        {
+          "id": "claude-code",
+          "note": "Skills CLI 提供安装入口；当前未在该客户端实测，需核对原文的工具和关联 Skill 依赖。"
+        }
+      ],
+      "recommendation": "",
+      "author": "Anthropic",
+      "license": {
+        "name": "Apache-2.0",
+        "url": "https://github.com/anthropics/skills/blob/dbd4588f9e1033efb41dad4bef2f7947c8993d44/skills/canvas-design/LICENSE.txt"
+      },
+      "homepage": null,
+      "verification": {
+        "commit": "dbd4588f9e1033efb41dad4bef2f7947c8993d44",
+        "contentHash": "a1f288079624402f30682753c1d43920b6664785698d21d3e7aa197450a6448b",
+        "checkedAt": "2026-10-15T13:14:15.459695+00:00",
+        "installDocUrl": "https://github.com/vercel-labs/skills#readme"
+      }
+    },
+    "metric": null,
+    "repository": {
+      "data": {
+        "stars": 181285,
+        "pushedAt": "2026-10-09T18:45:52Z",
+        "archived": false
+      },
+      "checkedAt": "2026-10-15T13:08:04.484590+00:00"
+    }
+  },
+  {
+    "repo": "anthropics/skills",
+    "path": "skills/brand-guidelines/SKILL.md",
+    "data": {
+      "name": "brand-guidelines",
+      "title": "Anthropic 品牌样式参考",
+      "summary": "应用 Anthropic 官方配色和字体规范。适合作为了解品牌规范如何组织的具体示例。",
+      "originalDescription": "Applies Anthropic's official brand colors and typography to any sort of artifact that may benefit from having Anthropic's look-and-feel. Use it when brand colors or style guidelines, visual formatting, or company design standards apply.",
+      "category": "design",
+      "tasks": [
+        "查看品牌规范结构",
+        "应用指定品牌样式"
+      ],
+      "example": "阅读这些品牌规范，说明它如何约束颜色与字体，并列出自有品牌还需准备的资料。",
+      "dependencies": [
+        "Node.js、Git 与已配置可用的目标 Agent 客户端。",
+        "需要相关项目或任务材料；特定工具和关联 Skills 以原始文档为准。"
+      ],
+      "clients": [
+        {
+          "id": "codex",
+          "note": "该资料以 Claude 工作流为背景，安装器支持 Codex；工具调用和文档脚本兼容性尚未实测。"
+        },
+        {
+          "id": "claude-code",
+          "note": "Skills CLI 提供安装入口；当前未在该客户端实测，需核对原文的工具和关联 Skill 依赖。"
+        }
+      ],
+      "recommendation": "",
+      "author": "Anthropic",
+      "license": {
+        "name": "Apache-2.0",
+        "url": "https://github.com/anthropics/skills/blob/dbd4588f9e1033efb41dad4bef2f7947c8993d44/skills/brand-guidelines/LICENSE.txt"
+      },
+      "homepage": null,
+      "verification": {
+        "commit": "dbd4588f9e1033efb41dad4bef2f7947c8993d44",
+        "contentHash": "1120b3769e2985cefb3d25be981b1f914abeba57ae079b83c20c666c164fa9fe",
+        "checkedAt": "2026-10-15T13:14:12.443679+00:00",
+        "installDocUrl": "https://github.com/vercel-labs/skills#readme"
+      }
+    },
+    "metric": null,
+    "repository": {
+      "data": {
+        "stars": 181285,
+        "pushedAt": "2026-10-09T18:45:52Z",
+        "archived": false
+      },
+      "checkedAt": "2026-10-15T13:08:04.484590+00:00"
+    }
+  },
+  {
+    "repo": "anthropics/skills",
+    "path": "skills/algorithmic-art/SKILL.md",
+    "data": {
+      "name": "algorithmic-art",
+      "title": "生成式代码艺术",
+      "summary": "用 p5.js、可复现随机种子与交互参数制作算法视觉，探索流场和粒子等效果。",
+      "originalDescription": "Creating algorithmic art using p5.js with seeded randomness and interactive parameter exploration. Use this when users request creating art using code, generative art, algorithmic art, flow fields, or particle systems. Create original algorithmic art rather than copying existing artists' work to avoid copyright violations.",
+      "category": "design",
+      "tasks": [
+        "制作交互视觉",
+        "探索参数化图案"
+      ],
+      "example": "制作一个可调色的粒子背景，保留固定随机种子，并支持导出静态画面。",
+      "dependencies": [
+        "Node.js、Git 与已配置可用的目标 Agent 客户端。",
+        "字体、绘图或浏览器运行环境以原始 SKILL.md 的任务要求为准。"
+      ],
+      "clients": [
+        {
+          "id": "codex",
+          "note": "该资料以 Claude 工作流为背景，安装器支持 Codex；工具调用和文档脚本兼容性尚未实测。"
+        },
+        {
+          "id": "claude-code",
+          "note": "Skills CLI 提供安装入口；当前未在该客户端实测，需核对原文的工具和关联 Skill 依赖。"
+        }
+      ],
+      "recommendation": "",
+      "author": "Anthropic",
+      "license": {
+        "name": "Apache-2.0",
+        "url": "https://github.com/anthropics/skills/blob/dbd4588f9e1033efb41dad4bef2f7947c8993d44/skills/algorithmic-art/LICENSE.txt"
+      },
+      "homepage": null,
+      "verification": {
+        "commit": "dbd4588f9e1033efb41dad4bef2f7947c8993d44",
+        "contentHash": "3bc4092c09804853186524c826bc0621b940bb6122c05b84496dff95388e6eef",
+        "checkedAt": "2026-10-15T13:14:13.883432+00:00",
+        "installDocUrl": "https://github.com/vercel-labs/skills#readme"
+      }
+    },
+    "metric": null,
+    "repository": {
+      "data": {
+        "stars": 181285,
+        "pushedAt": "2026-10-09T18:45:52Z",
+        "archived": false
+      },
+      "checkedAt": "2026-10-15T13:08:04.484590+00:00"
+    }
+  },
+  {
+    "repo": "anthropics/skills",
+    "path": "skills/theme-factory/SKILL.md",
+    "data": {
+      "name": "theme-factory",
+      "title": "主题与视觉样式",
+      "summary": "给文档、幻灯片和网页应用主题配色与字体，提供预设主题及自定义方向。",
+      "originalDescription": "Toolkit for styling artifacts with a theme. These artifacts can be slides, docs, reportings, HTML landing pages, etc. There are 10 pre-set themes with colors/fonts that you can apply to any artifact that has been creating, or can generate a new theme on-the-fly.",
+      "category": "design",
+      "tasks": [
+        "统一交付物风格",
+        "选择主题字体配色"
+      ],
+      "example": "为这份咨询报告挑选适合专业客户的主题，并统一标题、表格和强调色。",
+      "dependencies": [
+        "Node.js、Git 与已配置可用的目标 Agent 客户端。",
+        "需要相关项目或任务材料；特定工具和关联 Skills 以原始文档为准。"
+      ],
+      "clients": [
+        {
+          "id": "codex",
+          "note": "该资料以 Claude 工作流为背景，安装器支持 Codex；工具调用和文档脚本兼容性尚未实测。"
+        },
+        {
+          "id": "claude-code",
+          "note": "Skills CLI 提供安装入口；当前未在该客户端实测，需核对原文的工具和关联 Skill 依赖。"
+        }
+      ],
+      "recommendation": "",
+      "author": "Anthropic",
+      "license": {
+        "name": "Apache-2.0",
+        "url": "https://github.com/anthropics/skills/blob/dbd4588f9e1033efb41dad4bef2f7947c8993d44/skills/theme-factory/LICENSE.txt"
+      },
+      "homepage": null,
+      "verification": {
+        "commit": "dbd4588f9e1033efb41dad4bef2f7947c8993d44",
+        "contentHash": "c35893e221e28895c52143cc11bf30e41a44817796b39d4b15727dadc9796552",
+        "checkedAt": "2026-10-15T13:14:14.762861+00:00",
+        "installDocUrl": "https://github.com/vercel-labs/skills#readme"
+      }
+    },
+    "metric": null,
+    "repository": {
+      "data": {
+        "stars": 181285,
+        "pushedAt": "2026-10-09T18:45:52Z",
+        "archived": false
+      },
+      "checkedAt": "2026-10-15T13:08:04.484590+00:00"
+    }
+  },
+  {
+    "repo": "heygen-com/hyperframes",
+    "path": "skills/hyperframes/SKILL.md",
+    "data": {
+      "name": "hyperframes",
+      "title": "HyperFrames 视频工作流",
+      "summary": "统筹 HyperFrames 的视频制作与编辑流程，按任务选择脚本、素材、动画和渲染能力。",
+      "originalDescription": "Mandatory entry point: read this first for any request to make, create, edit, animate, or render a video, animation, or motion graphic, including a promo, explainer, captioned clip, title card, overlay, slideshow or interactive deck, Remotion port, or any HyperFrames HTML composition. Also use it to inspect, diagnose, validate, preview, publish, or batch-render an existing HyperFrames project. Inputs may be a website URL, GitHub PR, Figma design or URL, text or brief, existing footage, or music. It resumes project state, captures intent when applicable, selects and installs the owning workflow, and routes domain capabilities. HyperFrames is the default output framework unless the user explicitly chooses another framework for the deliverable or asks only to record a browser session.\n",
+      "category": "design",
+      "tasks": [
+        "规划 HTML 视频项目",
+        "协调视频制作步骤"
+      ],
+      "example": "用现有产品截图制作一支 30 秒功能介绍视频，先确认脚本和素材，再安排制作。",
+      "dependencies": [
+        "Node.js、Git 与已配置可用的目标 Agent 客户端。",
+        "需要 HyperFrames 项目与 CLI；渲染、浏览器和音视频工具按原始文档准备。",
+        "部分工作流依赖同仓库其它 Skills；使用生成素材或云服务时需自行配置账号与费用。"
+      ],
+      "clients": [
+        {
+          "id": "codex",
+          "note": "Skills CLI 提供安装入口；当前未在该客户端实测，需核对原文的工具和关联 Skill 依赖。"
+        },
+        {
+          "id": "claude-code",
+          "note": "Skills CLI 提供安装入口；当前未在该客户端实测，需核对原文的工具和关联 Skill 依赖。"
+        }
+      ],
+      "recommendation": "适合需要反复制作产品介绍、内容短片的小团队。",
+      "author": "HeyGen / HyperFrames",
+      "license": {
+        "name": "Apache-2.0",
+        "url": "https://github.com/heygen-com/hyperframes/blob/76222e41d7760f94426484ceb9f76d0007813fcc/LICENSE"
+      },
+      "homepage": null,
+      "verification": {
+        "commit": "76222e41d7760f94426484ceb9f76d0007813fcc",
+        "contentHash": "dd67af24e6ca148769f191abd68e670bade17c4b8c847d1ff9aa847fbd7ffe23",
+        "checkedAt": "2026-10-15T13:14:15.832571+00:00",
+        "installDocUrl": "https://github.com/vercel-labs/skills#readme"
+      }
+    },
+    "metric": {
+      "source": "skills.sh",
+      "metric": "installs",
+      "window": "all-time",
+      "displayValue": "986.0K",
+      "rank": 11,
+      "sourceUrl": "https://skills.sh/heygen-com/hyperframes/hyperframes",
+      "observedAt": "2026-10-15T09:27:46.236194+00:00"
+    },
+    "repository": {
+      "data": {
+        "stars": 64176,
+        "pushedAt": "2026-10-15T12:56:29Z",
+        "archived": false
+      },
+      "checkedAt": "2026-10-15T13:08:07.079481+00:00"
+    }
+  },
+  {
+    "repo": "heygen-com/hyperframes",
+    "path": "skills/hyperframes-cli/SKILL.md",
+    "data": {
+      "name": "hyperframes-cli",
+      "title": "HyperFrames 命令行工具",
+      "summary": "操作 HyperFrames 项目的初始化、检查、预览与渲染，辅助完成视频开发循环。",
+      "originalDescription": "Use the HyperFrames CLI development loop: init, add, catalog, capture, lint, check, snapshot, compare, grade-compare, preview, play, present, beats, keyframes, single or batch render, publish, cloud, cloudrun, feedback, lambda, doctor, browser, info, upgrade, skills, compositions, timeline, history, clean, docs, benchmark, telemetry, transcribe, auth, tts, and remove-background. Also use when diagnosing build or render failures. validate, inspect, and layout are deprecated aliases; use check. Covers local, HeyGen-hosted cloud, AWS Lambda, and Google Cloud Run rendering.\n",
+      "category": "automation",
+      "tasks": [
+        "初始化视频项目",
+        "检查和渲染成片"
+      ],
+      "example": "检查这个 HyperFrames 项目，生成预览截图并渲染一份测试视频。",
+      "dependencies": [
+        "Node.js、Git 与已配置可用的目标 Agent 客户端。",
+        "需要 HyperFrames 项目与 CLI；渲染、浏览器和音视频工具按原始文档准备。",
+        "部分工作流依赖同仓库其它 Skills；使用生成素材或云服务时需自行配置账号与费用。"
+      ],
+      "clients": [
+        {
+          "id": "codex",
+          "note": "Skills CLI 提供安装入口；当前未在该客户端实测，需核对原文的工具和关联 Skill 依赖。"
+        },
+        {
+          "id": "claude-code",
+          "note": "Skills CLI 提供安装入口；当前未在该客户端实测，需核对原文的工具和关联 Skill 依赖。"
+        }
+      ],
+      "recommendation": "",
+      "author": "HeyGen / HyperFrames",
+      "license": {
+        "name": "Apache-2.0",
+        "url": "https://github.com/heygen-com/hyperframes/blob/76222e41d7760f94426484ceb9f76d0007813fcc/LICENSE"
+      },
+      "homepage": null,
+      "verification": {
+        "commit": "76222e41d7760f94426484ceb9f76d0007813fcc",
+        "contentHash": "be481984f8d3c871c353a4ba82bb295a416634e11938de2081b950e9e488a3ff",
+        "checkedAt": "2026-10-15T13:14:17.472518+00:00",
+        "installDocUrl": "https://github.com/vercel-labs/skills#readme"
+      }
+    },
+    "metric": {
+      "source": "skills.sh",
+      "metric": "installs",
+      "window": "all-time",
+      "displayValue": "1.0M",
+      "rank": 7,
+      "sourceUrl": "https://skills.sh/heygen-com/hyperframes/hyperframes-cli",
+      "observedAt": "2026-10-15T09:27:46.236194+00:00"
+    },
+    "repository": {
+      "data": {
+        "stars": 64176,
+        "pushedAt": "2026-10-15T12:56:29Z",
+        "archived": false
+      },
+      "checkedAt": "2026-10-15T13:08:07.079481+00:00"
+    }
+  },
+  {
+    "repo": "heygen-com/hyperframes",
+    "path": "skills/hyperframes-core/SKILL.md",
+    "data": {
+      "name": "hyperframes-core",
+      "title": "HyperFrames 项目结构",
+      "summary": "定义可渲染的视频合成结构、时间属性、轨道和子合成，保持时间线可复现。",
+      "originalDescription": "The HyperFrames composition contract — build one renderable project. Use for composition structure, the `data-*` timing attributes, `class=\"clip\"`, tracks, sub-compositions, variables, framework-owned media playback, deterministic-render rules, and validation. Read before writing composition HTML.",
+      "category": "design",
+      "tasks": [
+        "搭建合成结构",
+        "检查轨道时间"
+      ],
+      "example": "把三个 HTML 场景组织成 20 秒视频合成，明确各场景起止时间与素材轨道。",
+      "dependencies": [
+        "Node.js、Git 与已配置可用的目标 Agent 客户端。",
+        "需要 HyperFrames 项目与 CLI；渲染、浏览器和音视频工具按原始文档准备。",
+        "部分工作流依赖同仓库其它 Skills；使用生成素材或云服务时需自行配置账号与费用。"
+      ],
+      "clients": [
+        {
+          "id": "codex",
+          "note": "Skills CLI 提供安装入口；当前未在该客户端实测，需核对原文的工具和关联 Skill 依赖。"
+        },
+        {
+          "id": "claude-code",
+          "note": "Skills CLI 提供安装入口；当前未在该客户端实测，需核对原文的工具和关联 Skill 依赖。"
+        }
+      ],
+      "recommendation": "",
+      "author": "HeyGen / HyperFrames",
+      "license": {
+        "name": "Apache-2.0",
+        "url": "https://github.com/heygen-com/hyperframes/blob/76222e41d7760f94426484ceb9f76d0007813fcc/LICENSE"
+      },
+      "homepage": null,
+      "verification": {
+        "commit": "76222e41d7760f94426484ceb9f76d0007813fcc",
+        "contentHash": "18ac7784765cc29af5a4d88f2a63a15deaf5395985009af188b5e3718edcfe3d",
+        "checkedAt": "2026-10-15T13:14:16.853152+00:00",
+        "installDocUrl": "https://github.com/vercel-labs/skills#readme"
+      }
+    },
+    "metric": {
+      "source": "skills.sh",
+      "metric": "installs",
+      "window": "all-time",
+      "displayValue": "816.4K",
+      "rank": 21,
+      "sourceUrl": "https://skills.sh/heygen-com/hyperframes/hyperframes-core",
+      "observedAt": "2026-10-15T09:27:46.236194+00:00"
+    },
+    "repository": {
+      "data": {
+        "stars": 64176,
+        "pushedAt": "2026-10-15T12:56:29Z",
+        "archived": false
+      },
+      "checkedAt": "2026-10-15T13:08:07.079481+00:00"
+    }
+  },
+  {
+    "repo": "heygen-com/hyperframes",
+    "path": "skills/hyperframes-animation/SKILL.md",
+    "data": {
+      "name": "hyperframes-animation",
+      "title": "HyperFrames 动画制作",
+      "summary": "处理场景动作、转场和动画运行方式，涵盖 GSAP 等动画方案。",
+      "originalDescription": "All animation knowledge for HyperFrames — atomic motion rules, multi-phase scene blueprints, scene transitions, broader motion-design techniques, AND the seven runtime adapters (GSAP default, plus Lottie, Three.js, Anime.js, CSS keyframes, Web Animations API, TypeGPU). Use for any motion or animation task: pick 2-4 rules and compose, or load a blueprint, or look up runtime-specific API (e.g. GSAP eases / Lottie player / Three.js mixer). Also covers auditing an existing composition's choreography (animation map) and 24 named text-animation effects. HyperFrames-native: single paused timeline, seek-safe, deterministic.",
+      "category": "design",
+      "tasks": [
+        "制作场景转场",
+        "调整元素运动"
+      ],
+      "example": "给这段产品演示添加简洁的入场与场景转场，避免遮挡关键文字。",
+      "dependencies": [
+        "Node.js、Git 与已配置可用的目标 Agent 客户端。",
+        "需要 HyperFrames 项目与 CLI；渲染、浏览器和音视频工具按原始文档准备。",
+        "部分工作流依赖同仓库其它 Skills；使用生成素材或云服务时需自行配置账号与费用。"
+      ],
+      "clients": [
+        {
+          "id": "codex",
+          "note": "Skills CLI 提供安装入口；当前未在该客户端实测，需核对原文的工具和关联 Skill 依赖。"
+        },
+        {
+          "id": "claude-code",
+          "note": "Skills CLI 提供安装入口；当前未在该客户端实测，需核对原文的工具和关联 Skill 依赖。"
+        }
+      ],
+      "recommendation": "",
+      "author": "HeyGen / HyperFrames",
+      "license": {
+        "name": "Apache-2.0",
+        "url": "https://github.com/heygen-com/hyperframes/blob/76222e41d7760f94426484ceb9f76d0007813fcc/LICENSE"
+      },
+      "homepage": null,
+      "verification": {
+        "commit": "76222e41d7760f94426484ceb9f76d0007813fcc",
+        "contentHash": "b35f1f8eff68e9ff480a5d5d343a1bf5a40ebb7d0d9be20b0b980cfdb36047f3",
+        "checkedAt": "2026-10-15T13:14:18.252305+00:00",
+        "installDocUrl": "https://github.com/vercel-labs/skills#readme"
+      }
+    },
+    "metric": {
+      "source": "skills.sh",
+      "metric": "installs",
+      "window": "all-time",
+      "displayValue": "873.9K",
+      "rank": 17,
+      "sourceUrl": "https://skills.sh/heygen-com/hyperframes/hyperframes-animation",
+      "observedAt": "2026-10-15T09:27:46.236194+00:00"
+    },
+    "repository": {
+      "data": {
+        "stars": 64176,
+        "pushedAt": "2026-10-15T12:56:29Z",
+        "archived": false
+      },
+      "checkedAt": "2026-10-15T13:08:07.079481+00:00"
+    }
+  },
+  {
+    "repo": "heygen-com/hyperframes",
+    "path": "skills/media-use/SKILL.md",
+    "data": {
+      "name": "media-use",
+      "title": "视频素材与资源整理",
+      "summary": "为 HyperFrames 项目查找和准备音乐、音效、图片、图标与声音资源，记录素材来源。",
+      "originalDescription": "Agent Media OS for a HyperFrames project. Resolve BGM, SFX, image, icon, brand logo, voice, color grade, or LUT into a frozen local file or paste-ready block + ledger record (one verb, `resolve`); generate via TTS / music / image models when the catalog misses; produce voiceover, transcription, captions, and background removal through one shared audio engine; operate on media (cut / reframe / transform); and reuse assets across projects. Also use for vague feedback that real footage looks dark, flat, boring, should feel retro/camcorder/print/ASCII, needs privacy, or needs a media reveal. When the host app provides its own music or sound-effect tools, use those for music and sound effects; `resolve --type bgm|sfx` needs the heygen CLI. When `HEYGEN_API_BASE` is set, HeyGen calls go through that host with no CLI sign-in.",
+      "category": "design",
+      "tasks": [
+        "准备视频素材",
+        "整理来源记录"
+      ],
+      "example": "根据这份脚本整理需要的图片、音乐与音效，优先使用已提供素材并记录来源。",
+      "dependencies": [
+        "Node.js、Git 与已配置可用的目标 Agent 客户端。",
+        "需要 HyperFrames 项目与 CLI；渲染、浏览器和音视频工具按原始文档准备。",
+        "部分工作流依赖同仓库其它 Skills；使用生成素材或云服务时需自行配置账号与费用。"
+      ],
+      "clients": [
+        {
+          "id": "codex",
+          "note": "Skills CLI 提供安装入口；当前未在该客户端实测，需核对原文的工具和关联 Skill 依赖。"
+        },
+        {
+          "id": "claude-code",
+          "note": "Skills CLI 提供安装入口；当前未在该客户端实测，需核对原文的工具和关联 Skill 依赖。"
+        }
+      ],
+      "recommendation": "",
+      "author": "HeyGen / HyperFrames",
+      "license": {
+        "name": "Apache-2.0",
+        "url": "https://github.com/heygen-com/hyperframes/blob/76222e41d7760f94426484ceb9f76d0007813fcc/LICENSE"
+      },
+      "homepage": null,
+      "verification": {
+        "commit": "76222e41d7760f94426484ceb9f76d0007813fcc",
+        "contentHash": "0f08ff6b493a46e0505dcc9c0c607e517e0eb70e7dc2b7b5c1f51b4f27bb6181",
+        "checkedAt": "2026-10-15T13:14:18.299096+00:00",
+        "installDocUrl": "https://github.com/vercel-labs/skills#readme"
+      }
+    },
+    "metric": {
+      "source": "skills.sh",
+      "metric": "installs",
+      "window": "all-time",
+      "displayValue": "904.3K",
+      "rank": 16,
+      "sourceUrl": "https://skills.sh/heygen-com/hyperframes/media-use",
+      "observedAt": "2026-10-15T09:27:46.236194+00:00"
+    },
+    "repository": {
+      "data": {
+        "stars": 64176,
+        "pushedAt": "2026-10-15T12:56:29Z",
+        "archived": false
+      },
+      "checkedAt": "2026-10-15T13:08:07.079481+00:00"
+    }
+  },
+  {
+    "repo": "heygen-com/hyperframes",
+    "path": "skills/general-video/SKILL.md",
+    "data": {
+      "name": "general-video",
+      "title": "自定义视频制作",
+      "summary": "编写或编辑多场景 HyperFrames 视频，适合没有专门模板的宣传片、混剪和视觉短片。",
+      "originalDescription": "Author or edit a custom HyperFrames composition when no specialized workflow fits, or when BRIEF.md sets flow: companion. Use for longer or multi-scene pieces, brand and sizzle reels, montages, static loops, static title cards, footage remixes, and freeform builds. Use motion-graphics instead for a short unnarrated motion-first unit, including an animated title. Route fresh creation through hyperframes before using this skill.\n",
+      "category": "design",
+      "tasks": [
+        "制作多场景短片",
+        "编辑现有视频项目"
+      ],
+      "example": "将已提供的活动照片制作成 45 秒回顾短片，按准备、现场、成果三个阶段组织。",
+      "dependencies": [
+        "Node.js、Git 与已配置可用的目标 Agent 客户端。",
+        "需要 HyperFrames 项目与 CLI；渲染、浏览器和音视频工具按原始文档准备。",
+        "部分工作流依赖同仓库其它 Skills；使用生成素材或云服务时需自行配置账号与费用。"
+      ],
+      "clients": [
+        {
+          "id": "codex",
+          "note": "Skills CLI 提供安装入口；当前未在该客户端实测，需核对原文的工具和关联 Skill 依赖。"
+        },
+        {
+          "id": "claude-code",
+          "note": "Skills CLI 提供安装入口；当前未在该客户端实测，需核对原文的工具和关联 Skill 依赖。"
+        }
+      ],
+      "recommendation": "",
+      "author": "HeyGen / HyperFrames",
+      "license": {
+        "name": "Apache-2.0",
+        "url": "https://github.com/heygen-com/hyperframes/blob/76222e41d7760f94426484ceb9f76d0007813fcc/LICENSE"
+      },
+      "homepage": null,
+      "verification": {
+        "commit": "76222e41d7760f94426484ceb9f76d0007813fcc",
+        "contentHash": "db87c1909eff755d810f83de6064bfb7c52a76e76ba388d4b00c98893dddcb1f",
+        "checkedAt": "2026-10-15T13:14:18.300880+00:00",
+        "installDocUrl": "https://github.com/vercel-labs/skills#readme"
+      }
+    },
+    "metric": {
+      "source": "skills.sh",
+      "metric": "installs",
+      "window": "all-time",
+      "displayValue": "587.1K",
+      "rank": 68,
+      "sourceUrl": "https://skills.sh/heygen-com/hyperframes/general-video",
+      "observedAt": "2026-10-15T09:27:46.236194+00:00"
+    },
+    "repository": {
+      "data": {
+        "stars": 64176,
+        "pushedAt": "2026-10-15T12:56:29Z",
+        "archived": false
+      },
+      "checkedAt": "2026-10-15T13:08:07.079481+00:00"
+    }
+  },
+  {
+    "repo": "heygen-com/hyperframes",
+    "path": "skills/product-launch-video/SKILL.md",
+    "data": {
+      "name": "product-launch-video",
+      "title": "产品发布与演示视频",
+      "summary": "从产品网页、脚本或简报制作产品介绍视频，展示功能、使用场景和发布信息。",
+      "originalDescription": "Turn a product or marketing URL, pasted script, or brief into a product launch / promo video — SaaS promos, feature reveals, product demos, app and company launches. Use when the user wants to market, launch, promote, or reveal a product; the default for any commercial URL. Site tours / showcases of a website route here too — the brief carries the show-it-as-is intent. Unclear → /hyperframes.",
+      "category": "design",
+      "tasks": [
+        "制作产品宣传片",
+        "演示新增功能"
+      ],
+      "example": "根据这个 SaaS 的功能说明，制作一支突出节省时间价值的产品演示视频。",
+      "dependencies": [
+        "Node.js、Git 与已配置可用的目标 Agent 客户端。",
+        "需要 HyperFrames 项目与 CLI；渲染、浏览器和音视频工具按原始文档准备。",
+        "部分工作流依赖同仓库其它 Skills；使用生成素材或云服务时需自行配置账号与费用。"
+      ],
+      "clients": [
+        {
+          "id": "codex",
+          "note": "Skills CLI 提供安装入口；当前未在该客户端实测，需核对原文的工具和关联 Skill 依赖。"
+        },
+        {
+          "id": "claude-code",
+          "note": "Skills CLI 提供安装入口；当前未在该客户端实测，需核对原文的工具和关联 Skill 依赖。"
+        }
+      ],
+      "recommendation": "适合把工具服务与自动化成果转为客户可理解的演示。",
+      "author": "HeyGen / HyperFrames",
+      "license": {
+        "name": "Apache-2.0",
+        "url": "https://github.com/heygen-com/hyperframes/blob/76222e41d7760f94426484ceb9f76d0007813fcc/LICENSE"
+      },
+      "homepage": null,
+      "verification": {
+        "commit": "76222e41d7760f94426484ceb9f76d0007813fcc",
+        "contentHash": "ea435b4e44c1a2fd50371e6e7e1e3c89ae01fd31528afba5b46f037274bceed9",
+        "checkedAt": "2026-10-15T13:14:19.169581+00:00",
+        "installDocUrl": "https://github.com/vercel-labs/skills#readme"
+      }
+    },
+    "metric": {
+      "source": "skills.sh",
+      "metric": "installs",
+      "window": "all-time",
+      "displayValue": "480.1K",
+      "rank": 103,
+      "sourceUrl": "https://skills.sh/heygen-com/hyperframes/product-launch-video",
+      "observedAt": "2026-10-15T09:27:46.236194+00:00"
+    },
+    "repository": {
+      "data": {
+        "stars": 64176,
+        "pushedAt": "2026-10-15T12:56:29Z",
+        "archived": false
+      },
+      "checkedAt": "2026-10-15T13:08:07.079481+00:00"
+    }
+  },
+  {
+    "repo": "heygen-com/hyperframes",
+    "path": "skills/hyperframes-audio/SKILL.md",
+    "data": {
+      "name": "hyperframes-audio",
+      "title": "HyperFrames 音频混合",
+      "summary": "调整已放入项目的音轨增益、音量自动化、压低背景音乐与基础音频效果。",
+      "originalDescription": "Use when audio already placed in a HyperFrames composition needs to be mixed: fade-in/fade-out, crossfade, track gain or volume, volume automation, ducking, a music bed that fights a voiceover (voiceover carve), effects on a track (EQ, compressor, limiter, gate, saturation, delay, reverb, chorus, phaser, bitcrush), automation envelopes drawn on a track's volume or any effect parameter, or one submix bus carrying a chain, a fader and an automation clock for several tracks at once (`<hf-audio-group>`). Don't use for sourcing or generating audio — finding BGM, SFX, or making a voiceover is `/media-use`. Don't use for clip timing or track layout, which is `/hyperframes-core`.\n",
+      "category": "design",
+      "tasks": [
+        "平衡旁白与背景音乐",
+        "调整淡入淡出"
+      ],
+      "example": "调整这段演示片的背景音乐，让旁白清晰，并为结尾添加淡出。",
+      "dependencies": [
+        "Node.js、Git 与已配置可用的目标 Agent 客户端。",
+        "需要 HyperFrames 项目与 CLI；渲染、浏览器和音视频工具按原始文档准备。",
+        "部分工作流依赖同仓库其它 Skills；使用生成素材或云服务时需自行配置账号与费用。"
+      ],
+      "clients": [
+        {
+          "id": "codex",
+          "note": "Skills CLI 提供安装入口；当前未在该客户端实测，需核对原文的工具和关联 Skill 依赖。"
+        },
+        {
+          "id": "claude-code",
+          "note": "Skills CLI 提供安装入口；当前未在该客户端实测，需核对原文的工具和关联 Skill 依赖。"
+        }
+      ],
+      "recommendation": "",
+      "author": "HeyGen / HyperFrames",
+      "license": {
+        "name": "Apache-2.0",
+        "url": "https://github.com/heygen-com/hyperframes/blob/76222e41d7760f94426484ceb9f76d0007813fcc/LICENSE"
+      },
+      "homepage": null,
+      "verification": {
+        "commit": "76222e41d7760f94426484ceb9f76d0007813fcc",
+        "contentHash": "daf3250390426ef096a7d2f71082919418099decbd1f31288640a43b43c7e293",
+        "checkedAt": "2026-10-15T13:14:20.190730+00:00",
+        "installDocUrl": "https://github.com/vercel-labs/skills#readme"
+      }
+    },
+    "metric": {
+      "source": "skills.sh",
+      "metric": "installs",
+      "window": "all-time",
+      "displayValue": "566.0K",
+      "rank": 72,
+      "sourceUrl": "https://skills.sh/heygen-com/hyperframes/hyperframes-audio",
+      "observedAt": "2026-10-15T09:27:46.236194+00:00"
+    },
+    "repository": {
+      "data": {
+        "stars": 64176,
+        "pushedAt": "2026-10-15T12:56:29Z",
+        "archived": false
+      },
+      "checkedAt": "2026-10-15T13:08:07.079481+00:00"
+    }
+  },
+  {
+    "repo": "coreyhaines31/marketingskills",
+    "path": "skills/copywriting/SKILL.md",
+    "data": {
+      "name": "copywriting",
+      "title": "营销页面文案",
+      "summary": "撰写和修改首页、落地页、价格页等营销文案，围绕用户需求与行动路径组织表达。",
+      "originalDescription": "When the user wants to write, rewrite, or improve marketing copy for any page, including homepage, landing pages, pricing pages, feature pages, about pages, or product pages. Also use when the user says \"write copy for,\" \"improve this copy,\" \"rewrite this page,\" \"marketing copy,\" \"headline help,\" \"CTA copy,\" \"value proposition,\" \"tagline,\" \"hero section copy,\" \"this copy is weak,\" \"this sounds like AI,\" \"AI slop,\" \"make it sound human,\" or \"help me describe my product.\" Use this whenever someone is working on website text that needs to persuade or convert. Drafts never use AI tells like \"it's not X, it's Y\" reveals, \"no X, no Y, no Z\" lists, or sentences that trail into extra comma clauses. For email copy, see emails. For popup copy, see popups. For editing existing copy, see copy-editing. For the offer underneath the copy (bonuses, guarantees, value framing), see offers. Claims must be supportable, and a declined claim names the evidence that would unlock it.",
+      "category": "content",
+      "tasks": [
+        "编写服务落地页",
+        "改进产品卖点表达"
+      ],
+      "example": "为面向本地商家的订单自动化服务写落地页文案，使用可验证的卖点，避免夸大收益。",
+      "dependencies": [
+        "Node.js、Git 与已配置可用的目标 Agent 客户端。",
+        "需要自己的产品、客户或经营资料；研究外部网站时需相应访问能力。"
+      ],
+      "clients": [
+        {
+          "id": "codex",
+          "note": "Skills CLI 提供安装入口；当前未在该客户端实测，需核对原文的工具和关联 Skill 依赖。"
+        },
+        {
+          "id": "claude-code",
+          "note": "Skills CLI 提供安装入口；当前未在该客户端实测，需核对原文的工具和关联 Skill 依赖。"
+        }
+      ],
+      "recommendation": "适合把 AI 服务的功能转成客户能理解的价值表达。",
+      "author": "Corey Haines",
+      "license": {
+        "name": "MIT",
+        "url": "https://github.com/coreyhaines31/marketingskills/blob/55ff469422c3592dac45bcad08dfb40221981c02/LICENSE"
+      },
+      "homepage": null,
+      "verification": {
+        "commit": "55ff469422c3592dac45bcad08dfb40221981c02",
+        "contentHash": "ecb4693fba9cc4f8841ec20f179574f04f69cbb1fb4cc66c59d955a22eccea6f",
+        "checkedAt": "2026-10-15T13:14:21.542394+00:00",
+        "installDocUrl": "https://github.com/vercel-labs/skills#readme"
+      }
+    },
+    "metric": null,
+    "repository": {
+      "data": {
+        "stars": 54835,
+        "pushedAt": "2026-10-14T21:21:00Z",
+        "archived": false
+      },
+      "checkedAt": "2026-10-15T13:08:05.274462+00:00"
+    }
+  },
+  {
+    "repo": "coreyhaines31/marketingskills",
+    "path": "skills/content-strategy/SKILL.md",
+    "data": {
+      "name": "content-strategy",
+      "title": "内容选题与策略",
+      "summary": "规划内容方向、主题组合与持续发布选题，帮助明确写什么以及为谁写。",
+      "originalDescription": "When the user wants to plan a content strategy, decide what content to create, or figure out what topics to cover. Also use when the user mentions \"content strategy,\" \"what should I write about,\" \"content ideas,\" \"blog strategy,\" \"topic clusters,\" \"content planning,\" \"editorial calendar,\" \"content marketing,\" \"content roadmap,\" \"what content should I create,\" \"blog topics,\" \"content pillars,\" or \"I don't know what to write.\" Use this whenever someone needs help deciding what content to produce, not just writing it. For writing individual pieces, see copywriting. For SEO-specific audits, see seo-audit. For social media content specifically, see social.",
+      "category": "content",
+      "tasks": [
+        "制定内容选题",
+        "规划主题系列"
+      ],
+      "example": "为面向小微企业的 AI 自动化服务规划四周内容，说明每篇解决的具体问题。",
+      "dependencies": [
+        "Node.js、Git 与已配置可用的目标 Agent 客户端。",
+        "需要自己的产品、客户或经营资料；研究外部网站时需相应访问能力。"
+      ],
+      "clients": [
+        {
+          "id": "codex",
+          "note": "Skills CLI 提供安装入口；当前未在该客户端实测，需核对原文的工具和关联 Skill 依赖。"
+        },
+        {
+          "id": "claude-code",
+          "note": "Skills CLI 提供安装入口；当前未在该客户端实测，需核对原文的工具和关联 Skill 依赖。"
+        }
+      ],
+      "recommendation": "",
+      "author": "Corey Haines",
+      "license": {
+        "name": "MIT",
+        "url": "https://github.com/coreyhaines31/marketingskills/blob/55ff469422c3592dac45bcad08dfb40221981c02/LICENSE"
+      },
+      "homepage": null,
+      "verification": {
+        "commit": "55ff469422c3592dac45bcad08dfb40221981c02",
+        "contentHash": "dce9f4027ae129691e92623541a360bee9356137a7eecf68afa95674af118e68",
+        "checkedAt": "2026-10-15T13:14:22.225703+00:00",
+        "installDocUrl": "https://github.com/vercel-labs/skills#readme"
+      }
+    },
+    "metric": null,
+    "repository": {
+      "data": {
+        "stars": 54835,
+        "pushedAt": "2026-10-14T21:21:00Z",
+        "archived": false
+      },
+      "checkedAt": "2026-10-15T13:08:05.274462+00:00"
+    }
+  },
+  {
+    "repo": "coreyhaines31/marketingskills",
+    "path": "skills/seo-audit/SKILL.md",
+    "data": {
+      "name": "seo-audit",
+      "title": "网站 SEO 检查",
+      "summary": "检查网站技术与页面 SEO 问题，梳理搜索可见性、元信息与自然流量线索。",
+      "originalDescription": "When the user wants to audit, review, or diagnose SEO issues on their site. Also use when the user mentions \"SEO audit,\" \"technical SEO,\" \"why am I not ranking,\" \"SEO issues,\" \"on-page SEO,\" \"meta tags review,\" \"SEO health check,\" \"my traffic dropped,\" \"lost rankings,\" \"not showing up in Google,\" \"site isn't ranking,\" \"Google update hit me,\" \"page speed,\" \"core web vitals,\" \"crawl errors,\" \"indexing issues,\" \"stuck on page 2,\" \"striking distance keywords,\" \"title tag rewrite,\" \"low CTR,\" \"local SEO,\" \"Google Business Profile,\" or \"map pack.\" Use this even if the user just says something vague like \"my SEO is bad\" or \"help with SEO\" — start with an audit. For building pages at scale to target keywords, see programmatic-seo. For adding structured data, see schema. For AI search optimization, see ai-seo.",
+      "category": "marketing",
+      "tasks": [
+        "诊断页面 SEO",
+        "整理网站优化清单"
+      ],
+      "example": "审查这个服务网站的首页和两个落地页，区分可直接验证的问题与需更多数据的假设。",
+      "dependencies": [
+        "Node.js、Git 与已配置可用的目标 Agent 客户端。",
+        "需要自己的产品、客户或经营资料；研究外部网站时需相应访问能力。"
+      ],
+      "clients": [
+        {
+          "id": "codex",
+          "note": "Skills CLI 提供安装入口；当前未在该客户端实测，需核对原文的工具和关联 Skill 依赖。"
+        },
+        {
+          "id": "claude-code",
+          "note": "Skills CLI 提供安装入口；当前未在该客户端实测，需核对原文的工具和关联 Skill 依赖。"
+        }
+      ],
+      "recommendation": "",
+      "author": "Corey Haines",
+      "license": {
+        "name": "MIT",
+        "url": "https://github.com/coreyhaines31/marketingskills/blob/55ff469422c3592dac45bcad08dfb40221981c02/LICENSE"
+      },
+      "homepage": null,
+      "verification": {
+        "commit": "55ff469422c3592dac45bcad08dfb40221981c02",
+        "contentHash": "bd5f6fca1334fc960d54403f7142e6d9da066eac7eb2b1ae194b7304bcf76d67",
+        "checkedAt": "2026-10-15T13:14:21.594178+00:00",
+        "installDocUrl": "https://github.com/vercel-labs/skills#readme"
+      }
+    },
+    "metric": {
+      "source": "skills.sh",
+      "metric": "installs",
+      "window": "all-time",
+      "displayValue": "228.3K",
+      "rank": 276,
+      "sourceUrl": "https://skills.sh/coreyhaines31/marketingskills/seo-audit",
+      "observedAt": "2026-10-15T09:27:46.236194+00:00"
+    },
+    "repository": {
+      "data": {
+        "stars": 54835,
+        "pushedAt": "2026-10-14T21:21:00Z",
+        "archived": false
+      },
+      "checkedAt": "2026-10-15T13:08:05.274462+00:00"
+    }
+  },
+  {
+    "repo": "coreyhaines31/marketingskills",
+    "path": "skills/customer-research/SKILL.md",
+    "data": {
+      "name": "customer-research",
+      "title": "客户需求研究",
+      "summary": "整理访谈、问卷、客服记录和公开反馈，提取客户任务、痛点与购买原因。",
+      "originalDescription": "When the user wants to conduct, analyze, or synthesize customer research. Use when the user mentions \"customer research,\" \"ICP research,\" \"talk to customers,\" \"analyze transcripts,\" \"customer interviews,\" \"survey analysis,\" \"support ticket analysis,\" \"voice of customer,\" \"VOC,\" \"build personas,\" \"customer personas,\" \"jobs to be done,\" \"JTBD,\" \"what do customers say,\" \"what are customers struggling with,\" \"Reddit mining,\" \"G2 reviews,\" \"review mining,\" \"digital watering holes,\" \"community research,\" \"forum research,\" \"competitor reviews,\" \"customer sentiment,\" \"PMF survey,\" \"product/market fit survey,\" \"customer interview questions,\" \"interview outreach,\" \"Sales Safari,\" or \"find out why customers churn/convert/buy.\" Use for analyzing existing research assets, mining online sources, AND running primary research (interviews and surveys). For writing copy informed by research, see copywriting. For acting on research to improve pages, see cro.",
+      "category": "marketing",
+      "tasks": [
+        "分析客户访谈",
+        "整理需求证据"
+      ],
+      "example": "分析这十份商家访谈，归纳重复出现的耗时流程，并附对应原话与待验证问题。",
+      "dependencies": [
+        "Node.js、Git 与已配置可用的目标 Agent 客户端。",
+        "需要自己的产品、客户或经营资料；研究外部网站时需相应访问能力。"
+      ],
+      "clients": [
+        {
+          "id": "codex",
+          "note": "Skills CLI 提供安装入口；当前未在该客户端实测，需核对原文的工具和关联 Skill 依赖。"
+        },
+        {
+          "id": "claude-code",
+          "note": "Skills CLI 提供安装入口；当前未在该客户端实测，需核对原文的工具和关联 Skill 依赖。"
+        }
+      ],
+      "recommendation": "适合在开发 AI 服务前，先核对真实需求和付费线索。",
+      "author": "Corey Haines",
+      "license": {
+        "name": "MIT",
+        "url": "https://github.com/coreyhaines31/marketingskills/blob/55ff469422c3592dac45bcad08dfb40221981c02/LICENSE"
+      },
+      "homepage": null,
+      "verification": {
+        "commit": "55ff469422c3592dac45bcad08dfb40221981c02",
+        "contentHash": "905e65e67268448d88b3b96cf045c6b3615cdd87c1060e129b148a31aa627669",
+        "checkedAt": "2026-10-15T13:14:27.667605+00:00",
+        "installDocUrl": "https://github.com/vercel-labs/skills#readme"
+      }
+    },
+    "metric": null,
+    "repository": {
+      "data": {
+        "stars": 54835,
+        "pushedAt": "2026-10-14T21:21:00Z",
+        "archived": false
+      },
+      "checkedAt": "2026-10-15T13:08:05.274462+00:00"
+    }
+  },
+  {
+    "repo": "coreyhaines31/marketingskills",
+    "path": "skills/marketing-plan/SKILL.md",
+    "data": {
+      "name": "marketing-plan",
+      "title": "小团队营销计划",
+      "summary": "结合预算、团队和业务阶段制定营销计划，组织获客、转化与留存的具体动作。",
+      "originalDescription": "When the user needs a comprehensive marketing plan for a client, a company they advise, or their own product. Also use when the user mentions \"marketing plan,\" \"growth plan,\" \"GTM plan,\" \"go-to-market plan,\" \"AARRR plan,\" \"90-day marketing plan,\" \"12-month marketing roadmap,\" \"fractional CMO plan,\" \"fCMO plan,\" \"market sizing,\" \"TAM SAM SOM,\" \"how big is this market,\" or \"market research.\" Generates an exhaustive 13-section plan structured by AARRR (Acquisition, Activation, Retention, Referral, Revenue), customized to the client's current budget, team, and stage, mapped to future funding milestones, cross-referenced with the 139-idea marketing-ideas library and an embedded 17-section current-state audit rubric, with a marketing operations stack showing which skills and MCP/API integrations execute each part. Outputs a Notion-paste-ready markdown document. For positioning and ICP context before planning, see product-marketing. For stage-specific deep work, see onboarding, signup, emails, referrals, pricing.",
+      "category": "marketing",
+      "tasks": [
+        "制定阶段营销计划",
+        "梳理获客路径"
+      ],
+      "example": "为两人 AI 工具服务团队制定 30 天营销计划，不使用付费广告，写明每周动作与验证指标。",
+      "dependencies": [
+        "Node.js、Git 与已配置可用的目标 Agent 客户端。",
+        "需要自己的产品、客户或经营资料；研究外部网站时需相应访问能力。"
+      ],
+      "clients": [
+        {
+          "id": "codex",
+          "note": "Skills CLI 提供安装入口；当前未在该客户端实测，需核对原文的工具和关联 Skill 依赖。"
+        },
+        {
+          "id": "claude-code",
+          "note": "Skills CLI 提供安装入口；当前未在该客户端实测，需核对原文的工具和关联 Skill 依赖。"
+        }
+      ],
+      "recommendation": "",
+      "author": "Corey Haines",
+      "license": {
+        "name": "MIT",
+        "url": "https://github.com/coreyhaines31/marketingskills/blob/55ff469422c3592dac45bcad08dfb40221981c02/LICENSE"
+      },
+      "homepage": null,
+      "verification": {
+        "commit": "55ff469422c3592dac45bcad08dfb40221981c02",
+        "contentHash": "2b75dfae852bdb61fd96eebe3d2b373f99f67c86ff830f796310f662ba8906e8",
+        "checkedAt": "2026-10-15T13:14:26.317684+00:00",
+        "installDocUrl": "https://github.com/vercel-labs/skills#readme"
+      }
+    },
+    "metric": null,
+    "repository": {
+      "data": {
+        "stars": 54835,
+        "pushedAt": "2026-10-14T21:21:00Z",
+        "archived": false
+      },
+      "checkedAt": "2026-10-15T13:08:05.274462+00:00"
+    }
+  },
+  {
+    "repo": "coreyhaines31/marketingskills",
+    "path": "skills/pricing/SKILL.md",
+    "data": {
+      "name": "pricing",
+      "title": "定价与产品套餐",
+      "summary": "分析价格、套餐和收费单位，围绕客户价值、付费意愿与业务目标整理定价选择。",
+      "originalDescription": "When the user wants help with pricing decisions, packaging, or monetization strategy. Also use when the user mentions 'pricing,' 'pricing tiers,' 'freemium,' 'free trial,' 'packaging,' 'price increase,' 'value metric,' 'Van Westendorp,' 'willingness to pay,' 'monetization,' 'how much should I charge,' 'my pricing is wrong,' 'pricing page,' 'annual vs monthly,' 'per seat pricing,' 'should I offer a free plan,' 'pricing page teardown,' 'pricing page audit,' 'is my pricing page AI-readable,' or 'can AI read my pricing.' Use this whenever someone is figuring out what to charge, how to structure their plans, or wants to audit a pricing page (for humans and for the AI agents that shortlist tools). For in-app upgrade screens, see paywalls. For offer construction (bonuses, guarantees, value framing, naming) on services/courses/coaching/high-ticket B2B, see offers.",
+      "category": "marketing",
+      "tasks": [
+        "设计服务套餐",
+        "分析定价取舍"
+      ],
+      "example": "为客户资料整理服务设计按次与月度两种方案，列出成本假设、适用客户与需验证的问题。",
+      "dependencies": [
+        "Node.js、Git 与已配置可用的目标 Agent 客户端。",
+        "需要自己的产品、客户或经营资料；研究外部网站时需相应访问能力。"
+      ],
+      "clients": [
+        {
+          "id": "codex",
+          "note": "Skills CLI 提供安装入口；当前未在该客户端实测，需核对原文的工具和关联 Skill 依赖。"
+        },
+        {
+          "id": "claude-code",
+          "note": "Skills CLI 提供安装入口；当前未在该客户端实测，需核对原文的工具和关联 Skill 依赖。"
+        }
+      ],
+      "recommendation": "",
+      "author": "Corey Haines",
+      "license": {
+        "name": "MIT",
+        "url": "https://github.com/coreyhaines31/marketingskills/blob/55ff469422c3592dac45bcad08dfb40221981c02/LICENSE"
+      },
+      "homepage": null,
+      "verification": {
+        "commit": "55ff469422c3592dac45bcad08dfb40221981c02",
+        "contentHash": "b0318f64140e60a28d0cf71b1a6bf2aa214b96ef2bc3253c60d16ae480367d25",
+        "checkedAt": "2026-10-15T13:14:23.140226+00:00",
+        "installDocUrl": "https://github.com/vercel-labs/skills#readme"
+      }
+    },
+    "metric": null,
+    "repository": {
+      "data": {
+        "stars": 54835,
+        "pushedAt": "2026-10-14T21:21:00Z",
+        "archived": false
+      },
+      "checkedAt": "2026-10-15T13:08:05.274462+00:00"
+    }
+  },
+  {
+    "repo": "vercel-labs/skills",
+    "path": "skills/find-skills/SKILL.md",
+    "data": {
+      "name": "find-skills",
+      "title": "查找适合的 Skill",
+      "summary": "根据想完成的任务发现可安装的 Skills，帮助比较候选能力并了解安装入口。",
+      "originalDescription": "Helps users discover and install agent skills when they ask questions like \"how do I do X\", \"find a skill for X\", \"is there a skill that can...\", or express interest in extending capabilities. This skill should be used when the user is looking for functionality that might exist as an installable skill.",
+      "category": "automation",
+      "tasks": [
+        "按任务寻找 Skill",
+        "比较候选工具"
+      ],
+      "example": "帮我找能整理客户反馈的 Skills，先列出来源与安装方式，再由我选择。",
+      "dependencies": [
+        "Node.js、Git 与已配置可用的目标 Agent 客户端。",
+        "需要相关项目或任务材料；特定工具和关联 Skills 以原始文档为准。"
+      ],
+      "clients": [
+        {
+          "id": "codex",
+          "note": "Skills CLI 提供安装入口；当前未在该客户端实测，需核对原文的工具和关联 Skill 依赖。"
+        },
+        {
+          "id": "claude-code",
+          "note": "Skills CLI 提供安装入口；当前未在该客户端实测，需核对原文的工具和关联 Skill 依赖。"
+        }
+      ],
+      "recommendation": "",
+      "author": "Vercel",
+      "license": {
+        "name": "MIT",
+        "url": "https://github.com/vercel-labs/skills/blob/13e4063a1cf913f5606d57d42ab83a86f5001e04/LICENSE"
+      },
+      "homepage": null,
+      "verification": {
+        "commit": "13e4063a1cf913f5606d57d42ab83a86f5001e04",
+        "contentHash": "c00eeea0e13e74fe4a9d84ba0a8542205a1b736d65f13134fe1a6647eb14976f",
+        "checkedAt": "2026-10-15T13:14:27.314694+00:00",
+        "installDocUrl": "https://github.com/vercel-labs/skills#readme"
+      }
+    },
+    "metric": {
+      "source": "skills.sh",
+      "metric": "installs",
+      "window": "all-time",
+      "displayValue": "3.9M",
+      "rank": 1,
+      "sourceUrl": "https://skills.sh/vercel-labs/skills/find-skills",
+      "observedAt": "2026-10-15T09:27:46.236194+00:00"
+    },
+    "repository": {
+      "data": {
+        "stars": 35042,
+        "pushedAt": "2026-10-09T17:54:47Z",
+        "archived": false
+      },
+      "checkedAt": "2026-10-15T13:08:03.493165+00:00"
+    }
+  }
+]
