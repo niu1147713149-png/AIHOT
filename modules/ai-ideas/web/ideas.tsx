@@ -1,4 +1,6 @@
+import { useEffect, useRef, useState, type ReactNode } from "react";
 import { Form, Link, isRouteErrorResponse, useLoaderData, useNavigation, useRevalidator, useRouteError, type LoaderFunctionArgs } from "react-router";
+import type { AdminMe } from "@aihot/contracts/admin";
 import { IDEA_CATEGORIES, IDEA_STATUS_LABELS, type IdeasEdition } from "@aihot/contracts/ideas";
 import { beijingDate } from "@aihot/contracts/time";
 import { cachedPage, loadOr404, pageHeaders } from "@aihot/web/lib/api.server";
@@ -21,22 +23,69 @@ export function ErrorBoundary() {
     <p>{badDate ? "请选择不晚于今天的有效日期。" : "请稍后重新加载，已生成的创意仍会保留。"}</p>
     <Link className="ideas-link" to="/ideas">返回今天</Link>{!badDate && <button className="ideas-button" disabled={reload.state !== "idle"} onClick={() => reload.revalidate()}>重新加载</button>}</section>;
 }
-function EmptyEdition({ edition: e }: { edition: IdeasEdition }) {
+function EmptyEdition({ edition: e, action }: { edition: IdeasEdition; action: ReactNode }) {
   const waiting = e.status === "queued" || e.status === "running";
   const title = e.status === "outdated" ? "新闻依据有变，这期创意待更新" : waiting ? "这一期创意正在准备中" : e.status === "failed" ? "这一期暂未生成完成"
-    : !e.currentSourceCount ? "这一天还没有可用新闻" : e.status === "empty" ? "这一天暂未发现适合尝试的创意" : "有新闻了，创意还在准备中";
-  const description = e.status === "outdated" ? "相关报道已更正或撤回，旧推演已隐藏。" : waiting ? "生成任务由后台处理，可以稍后刷新查看。"
-    : e.status === "failed" ? "可先阅读往期，后台修复后会继续生成。" : !e.currentSourceCount ? "先看看最近一期，或浏览已有 AI 动态。这里不会用旧新闻替代当天资料。"
-    : e.status === "empty" ? "资料不足时保持留白。先读新闻，也许你能发现更合适的切口。" : "完成当日分析后会列在这里，可先读新闻或查看往期。";
+    : !e.currentSourceCount ? "这一天还没有可用新闻" : e.status === "empty" ? "这一天暂未发现适合尝试的创意" : "有新闻了，生成几个新创意吧";
+  const description = e.status === "outdated" ? "相关报道已更正或撤回，可以根据当前新闻重新生成。" : waiting ? "AI 正在整理新闻，完成后创意会自动显示，无需反复点击。"
+    : e.status === "failed" ? "上次生成未完成，可以重试或先阅读往期。" : !e.currentSourceCount ? "先看看最近一期，或浏览已有 AI 动态。新闻准备好后即可生成。"
+    : e.status === "empty" ? "资料不足时保持留白。新闻有更新后，可以再试一次。" : "让 AI 结合这一天的新闻，提出最多 5 个创意，并说明理由、来源和验证方法。";
   const recent = e.dates.find(d => d !== e.date), newsDate = e.sourceDates.find(d => d !== e.date);
   return <section className="ideas-empty"><IconSparkles size={28} /><h2>{title}</h2><p>{description}</p>
-    <div className="ideas-empty-links">{recent && <Link className="ideas-button ideas-primary" to={`/ideas?date=${recent}`}>查看最近一期 · {recent}</Link>}
+    <div className="ideas-empty-links">{action}{recent && <Link className="ideas-button" to={`/ideas?date=${recent}`}>查看最近一期 · {recent}</Link>}
       {!recent && newsDate && <Link className="ideas-link" to={`/ideas?date=${newsDate}`}>最近有新闻 · {newsDate}</Link>}
       <Link className="ideas-link" to="/all">浏览 AI 动态 ↗</Link></div></section>;
 }
 export default function Ideas() {
-  const { edition: e } = useLoaderData<typeof loader>(), navigation = useNavigation(), reload = useRevalidator();
+  const { edition } = useLoaderData<typeof loader>();
+  return <IdeasView key={edition.date} edition={edition} />;
+}
+function IdeasView({ edition: e }: { edition: IdeasEdition }) {
+  const navigation = useNavigation(), reload = useRevalidator();
+  const [submitting, setSubmitting] = useState(false), [error, setError] = useState("");
+  const inFlight = useRef<AbortController | null>(null);
+  const pending = e.status === "queued" || e.status === "running";
   const busy = navigation.state !== "idle" || reload.state !== "idle";
+  useEffect(() => () => inFlight.current?.abort(), []);
+  useEffect(() => {
+    if (!pending) return;
+    const timer = setInterval(() => { if (document.visibilityState === "visible" && reload.state === "idle") void reload.revalidate(); }, 5000);
+    return () => clearInterval(timer);
+  }, [pending, reload]);
+  function signIn() {
+    // The existing login flow only returns to admin paths. This module's admin loader returns
+    // the authenticated visitor here; it never generates merely because a page was opened.
+    const target = `/admin/ideas?${new URLSearchParams({ date: e.date, from: "public" })}`;
+    window.location.assign(`/api/auth/login?${new URLSearchParams({ return: target })}`);
+  }
+  async function generate() {
+    if (inFlight.current || pending || !e.currentSourceCount) return;
+    const controller = new AbortController();
+    inFlight.current = controller; setSubmitting(true); setError("");
+    const options = { credentials: "same-origin" as const, cache: "no-store" as const,
+      signal: AbortSignal.any([controller.signal, AbortSignal.timeout(20000)]) };
+    try {
+      const identity = await fetch("/api/admin/me", options);
+      if (identity.status === 401) { signIn(); return; }
+      if (!identity.ok) throw new Error("暂时无法验证登录状态，请稍后重试。");
+      const me = await identity.json() as AdminMe;
+      if (!me.csrf) throw new Error("登录状态已变化，请刷新页面后重试。");
+      const response = await fetch("/api/admin/ideas/generate", { ...options, method: "POST",
+        headers: { "content-type": "application/json", "x-csrf-token": me.csrf },
+        body: JSON.stringify({ date: e.date, reason: "从创意集市页面按所选日期生成创意" }) });
+      if (response.status === 401) { signIn(); return; }
+      if (response.status === 403) throw new Error("登录状态已变化，请刷新页面后重试。");
+      if (response.status === 409) throw new Error("模型服务尚未开启，请在后台配置后重试。");
+      if (!response.ok) throw new Error("生成任务未能提交，请稍后重试。");
+      await reload.revalidate();
+    } catch (cause) {
+      if (!controller.signal.aborted) setError(cause instanceof Error && cause.name === "Error" ? cause.message : "网络请求未完成，请刷新状态后再试。");
+    } finally {
+      if (!controller.signal.aborted) { inFlight.current = null; setSubmitting(false); }
+    }
+  }
+  const generateButton = <button type="button" className="ideas-button ideas-primary ideas-generate" disabled={busy || submitting || pending || !e.currentSourceCount}
+    onClick={generate}><IconSparkles size={15} />{submitting ? "正在提交…" : pending ? "正在生成…" : e.generatedAt ? "AI 更新创意" : "AI 生成创意"}</button>;
   return <><PhoneBar title="创意集市" /><div className="ideas-page">
     <header className="ideas-header"><div className="ideas-eyebrow"><IconSparkles size={16} /> AI 灵感 <span>国内业务 · 个人与小团队</span></div>
       <h1 data-page-title="">创意集市</h1><p>从今天的 AI 新闻里，发现值得尝试的新想法。</p></header>
@@ -44,13 +93,15 @@ export default function Ideas() {
       <label htmlFor="ideas-date">新闻日期</label><input className="ideas-date" id="ideas-date" type="date" name="date" defaultValue={e.date} max={e.today} required />
       <button className="ideas-button" type="submit" disabled={busy}>查看</button></Form>
       <div className="ideas-date-actions">{e.date !== e.today && <Link className="ideas-link" to="/ideas">回到今天</Link>}
-        <button className="ideas-refresh" disabled={busy} onClick={() => reload.revalidate()}>刷新内容</button></div></div>
+        <button className="ideas-refresh" disabled={busy} onClick={() => reload.revalidate()}>刷新内容</button>{e.ideas.length > 0 && generateButton}</div></div>
     <div className="ideas-meta" role="status">{busy ? "正在加载这一天的创意…" : <><span>{e.date === e.today ? "今天" : "往期"} · {e.date}（北京时间）</span>
       <span>{e.ideas.length ? `${e.ideas.length} 个创意 · 参考 ${e.sourceCount} 条新闻` : IDEA_STATUS_LABELS[e.status]}</span></>}</div>
     {e.dates.length > 0 && <nav className="ideas-archive" aria-label="往期创意">{e.dates.slice(0, 7).map(date => <Link key={date} className="ideas-date-chip" aria-current={date === e.date ? "page" : undefined} to={`/ideas?date=${date}`}>{date.slice(5)}</Link>)}</nav>}
-    <p className="ideas-note">依据本站采集的新闻摘要生成，每条附具体出处。创意、目标客户与收费方式是 AI 推演，尚未经市场验证。</p>
+    <p className="ideas-note">依据本站采集的新闻摘要生成，每条附具体出处。创意、目标客户与收费方式是 AI 推演，尚未经市场验证。生成需管理员登录，结果对所有人公开。</p>
+    {error && <p className="ideas-notice" role="alert">{error}</p>}
+    {(pending || submitting) && <p className="ideas-notice" role="status">{submitting ? "正在提交生成请求…" : e.status === "queued" ? "任务已提交，正在等待 AI 生成；完成后本页会自动更新。" : "AI 正在根据新闻生成创意，完成后本页会自动更新。"}{e.ideas.length > 0 && "下方仍可阅读上次的创意。"}</p>}
     {e.hiddenCount > 0 && <p className="ideas-notice" role="status">{e.hiddenCount} 个创意的新闻依据已变更，暂时隐藏，等待重新分析。</p>}
-    {e.ideas.length > 0 && ["queued", "running", "failed"].includes(e.status) && <p className="ideas-notice" role="status">{IDEA_STATUS_LABELS[e.status]}，以下为上次生成且依据仍有效的创意。</p>}
+    {e.ideas.length > 0 && e.status === "failed" && <p className="ideas-notice" role="status">{IDEA_STATUS_LABELS[e.status]}，以下为上次生成且依据仍有效的创意。</p>}
     {e.ideas.length ? <ol className="ideas-list">{e.ideas.map((idea, index) => <li key={`${e.date}-${index}`}>
       <article className={`idea-card${index === 0 ? " idea-first" : ""}`}>
         <div className="idea-top"><span className="idea-rank">{String(index + 1).padStart(2, "0")}</span><span className="idea-category">{IDEA_CATEGORIES[idea.category]}</span>{index === 0 && <span className="idea-priority">优先看看</span>}</div>
@@ -69,7 +120,7 @@ export default function Ideas() {
             <Link className="ideas-link" to={`/items/${encodeURIComponent(source.id)}`}>{source.title}</Link><p className="idea-source-meta">{source.source} · {beijingDate(source.at)} · <a href={source.url} target="_blank" rel="noopener noreferrer">阅读原文 ↗</a></p>
             <p className="idea-source-summary">{source.summary}</p></li>)}</ul></section>
         </div></details>
-      </article></li>)}</ol> : <EmptyEdition edition={e} />}
+      </article></li>)}</ol> : <EmptyEdition edition={e} action={generateButton} />}
     {e.generatedAt && <footer className="ideas-footer">生成于 {new Date(e.generatedAt).toLocaleString("zh-CN", { timeZone: "Asia/Shanghai", hour12: false })}（北京时间） · 新闻日期按本站动态时间归档</footer>}
   </div></>;
 }

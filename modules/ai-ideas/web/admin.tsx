@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Form, Link, useLoaderData, useRevalidator, type LoaderFunctionArgs } from "react-router";
+import { Form, Link, redirect, useLoaderData, useRevalidator, type LoaderFunctionArgs } from "react-router";
 import type { AdminIdeas } from "@aihot/contracts/ideas";
 import { IDEA_STATUS_LABELS } from "@aihot/contracts/ideas";
 import { adminGet } from "@aihot/web/lib/admin.server";
@@ -8,8 +8,10 @@ import { AdminPage, Badge, Button, Card, Field, Input } from "@aihot/web/feature
 import "./ideas.css";
 
 export async function loader({ request }: LoaderFunctionArgs) {
-  const date = new URL(request.url).searchParams.get("date");
-  return adminGet<AdminIdeas>(request, `/api/admin/ideas${date ? `?date=${encodeURIComponent(date)}` : ""}`);
+  const params = new URL(request.url).searchParams, date = params.get("date");
+  const result = await adminGet<AdminIdeas>(request, `/api/admin/ideas${date ? `?date=${encodeURIComponent(date)}` : ""}`);
+  if (params.get("from") === "public") throw redirect(`/ideas?date=${encodeURIComponent(result.edition.date)}`);
+  return result;
 }
 export default function AdminIdeasPage() {
   const result = useLoaderData<typeof loader>(), e = result.edition, action = useAdminAction(), reload = useRevalidator();

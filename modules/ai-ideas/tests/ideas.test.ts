@@ -120,6 +120,7 @@ test("authentication, CSRF, date validation and queue admission do not perform m
   const id = await add(), server = await provider(() => ({ ideas: [idea(id)] }));
   try {
     assert.equal((await app.inject("/api/admin/ideas")).statusCode, 401);
+    assert.equal((await app.inject({ method: "POST", url: "/api/admin/ideas/generate", payload: { date, reason: "访客点击生成" } })).statusCode, 401);
     config.devAdmin = { displayName: "Ideas Editor" };
     const payload = { date, reason: "测试生成任务" }, headers = { "x-csrf-token": "dev" };
     assert.equal((await app.inject({ method: "POST", url: "/api/admin/ideas/generate", payload })).statusCode, 403);
