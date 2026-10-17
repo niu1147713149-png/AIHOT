@@ -131,7 +131,8 @@ export interface OutlineEntry {
 
 /**
  * An article page (/api/site/items/:id) in one language: Chinese (the article itself or its translation)
- * unless …/original asks for the original. Only the body shown is sent, with its outline.
+ * unless …/original asks for the original or ?language=bilingual requests a parallel reading.
+ * Only the body shown is sent, with its outline.
  */
 export interface SiteItemDetail extends ItemSummary {
   /** The post with all its media; its text is the body. */
@@ -141,7 +142,7 @@ export interface SiteItemDetail extends ItemSummary {
   readingMode: "full" | "summary-only";
   author: string | null;
   /** Whitelisted HTML of the language shown; the other one is null. */
-  body: { zh: string | null; original: string | null; zhKind: "translation" | "original" | null; complete: boolean } | null;
+  body: { zh: string | null; original: string | null; bilingual?: string | null; zhKind: "translation" | "original" | null; complete: boolean } | null;
   outline: OutlineEntry[];
   relatedStories: StoryRef[];
   /** The topics the report belongs to. */
@@ -150,7 +151,7 @@ export interface SiteItemDetail extends ItemSummary {
   markdownAvailable: boolean;
   group: GroupInfo | null;
   hasTranslation: boolean;
-  bodyLanguage: "zh" | "original";
+  bodyLanguage: "zh" | "original" | "bilingual";
 }
 
 /** A fact's public reports under the list's filters: what "另有 N 家信源报道" opens. */

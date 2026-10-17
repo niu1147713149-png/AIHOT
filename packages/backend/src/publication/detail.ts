@@ -11,6 +11,7 @@ import { evidenceCondition, listedCondition } from "./scope.ts";
 import { itemUrl, siteUrl } from "./links.ts";
 import { hasItemPage, publicSourceName } from "./rules.ts";
 import { topicLinks, topicMembership } from "./topics.ts";
+import { bilingualBody } from "./bilingual.ts";
 
 interface DetailRow extends ItemRow {
   body_html: string | null;
@@ -54,19 +55,29 @@ async function loadRow(id: string): Promise<DetailRow | null> {
  * the HTML shown into what is sent, with its outline.
  */
 function readingBody(
-  language: "zh" | "original",
+  language: "zh" | "original" | "bilingual",
   zh: { html: string; kind: "translation" | "original" } | null,
   original: string | null,
   complete: boolean,
   page: (html: string) => { html: string; outline: OutlineEntry[] },
 ): Pick<SiteItemDetail, "body" | "outline" | "hasTranslation" | "bodyLanguage"> {
+  const hasTranslation = zh?.kind === "translation" && !!zh.html && !!original;
+  if (language === "bilingual" && hasTranslation) {
+    const translation = page(zh!.html);
+    return {
+      body: { zh: null, original: null, bilingual: bilingualBody(translation.html, page(original!).html), zhKind: "translation", complete },
+      outline: translation.outline,
+      hasTranslation,
+      bodyLanguage: "bilingual",
+    };
+  }
   const bodyLanguage = language === "original" && original ? "original" : zh?.html ? "zh" : "original";
   const shown = bodyLanguage === "zh" ? zh!.html : original;
   const sent = shown ? page(shown) : { html: shown, outline: [] };
   return {
     body: { zh: bodyLanguage === "zh" ? sent.html : null, original: bodyLanguage === "original" ? sent.html : null, zhKind: zh?.kind ?? null, complete },
     outline: sent.outline,
-    hasTranslation: zh?.kind === "translation" && !!zh.html && !!original,
+    hasTranslation,
     bodyLanguage,
   };
 }
@@ -76,7 +87,7 @@ function readingBody(
  * lists leave out (low relevance, merged duplicates, no Chinese summary yet) keep a noindex page;
  * withdrawn and hot_signal items are a 404.
  */
-export async function loadItemDetail(id: string, language: "zh" | "original" = "zh", now = new Date()): Promise<DetailResult> {
+export async function loadItemDetail(id: string, language: "zh" | "original" | "bilingual" = "zh", now = new Date()): Promise<DetailResult> {
   const row = await loadRow(id);
   if (!row || !hasItemPage({ visibility: row.visibility, sourceMode: row.source_mode })) return { kind: "not_found" };
 

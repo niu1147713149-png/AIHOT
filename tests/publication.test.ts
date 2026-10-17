@@ -161,10 +161,18 @@ test("site reading sends one language while exports retain both, including after
   assert.equal(original.body.zh, null);
   assert.ok(original.body.original.includes('Original full body'));
   assert.equal(original.outline[0].text, 'Original heading');
+  const bilingual = JSON.parse((await get(`/api/site/items/${id}?language=bilingual`)).body);
+  assert.equal(bilingual.bodyLanguage, 'bilingual');
+  assert.equal(bilingual.body.zh, null);
+  assert.equal(bilingual.body.original, null);
+  assert.ok(bilingual.body.bilingual.includes('中文完整正文') && bilingual.body.bilingual.includes('Original full body'));
+  assert.equal(bilingual.outline[0].text, '译文标题');
+  assert.equal((bilingual.body.bilingual.match(/id="sec-1"/g) ?? []).length, 1);
   const md = (await get(`/items/${id}/markdown`)).body;
   assert.ok(md.includes('Original full body') && md.includes('中文完整正文'));
   await setVisibility(id, { visibility: 'withdrawn', reason: 'test', version: 0 }, 'test');
   assert.equal((await get(`/api/site/items/${id}/original`)).status, 404);
+  assert.equal((await get(`/api/site/items/${id}?language=bilingual`)).status, 404);
 });
 
 test("revoking a source's licence takes its articles off every exit", async () => {

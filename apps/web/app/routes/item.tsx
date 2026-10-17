@@ -32,7 +32,8 @@ export { pageHeaders as headers } from "../lib/api.server";
 const PosterSheet = lazy(() => import("../features/item/PosterSheet"));
 
 export async function loader({ params, request }: Route.LoaderArgs) {
-  const item = await loadOr404<SiteItemDetail>(`/api/site/items/${encodeURIComponent(params.id)}`, { signal: request.signal });
+  const language = new URL(request.url).searchParams.get("lang") === "zh" ? "zh" : "bilingual";
+  const item = await loadOr404<SiteItemDetail>(`/api/site/items/${encodeURIComponent(params.id)}?language=${language}`, { signal: request.signal });
   return cachedPage(600, { item });
 }
 
@@ -339,8 +340,8 @@ function ItemView({ item }: { item: SiteItemDetail }) {
     }
   };
 
-  const bodyHtml = lang === "zh" ? (item.body?.zh ?? item.body?.original) : (item.body?.original ?? item.body?.zh);
-  const bodyLabel = !item.body ? null : lang === "zh" && item.body.zhKind === "translation" ? "正文 · AI 翻译" : lang === "original" && hasTranslation ? "正文 · 原文" : "正文";
+  const bodyHtml = lang === "bilingual" ? item.body?.bilingual : lang === "zh" ? (item.body?.zh ?? item.body?.original) : (item.body?.original ?? item.body?.zh);
+  const bodyLabel = !item.body ? null : lang === "bilingual" ? "正文 · 中英对照 · AI 翻译" : lang === "zh" && item.body.zhKind === "translation" ? "正文 · AI 翻译" : lang === "original" && hasTranslation ? "正文 · 原文" : "正文";
   const isX = item.channel === "x" && !!item.x;
   // Without a reliable date from the original, the time shown is when it was collected, labelled as such.
   const shownAt = item.publishedAt ?? item.discoveredAt;
@@ -555,7 +556,7 @@ function ItemView({ item }: { item: SiteItemDetail }) {
 
           {item.body && bodyHtml && (
             <section className="mt-9 border-t border-line pt-4 xl:mt-10">
-              <div className="mb-6 flex items-center justify-between gap-3">
+              <div className="mb-6 flex flex-wrap items-center justify-between gap-3">
                 <span className="text-[12px] text-ink-4">{bodyLabel}</span>
                 {hasTranslation && (
                   <PillTabs
@@ -564,21 +565,23 @@ function ItemView({ item }: { item: SiteItemDetail }) {
                     label="正文语言"
                     active={lang}
                     items={[
-                      { key: "zh", label: "中文", prefetch: "intent", replace: true, to: `/items/${item.id}` },
+                      { key: "bilingual", label: "中英对照", prefetch: "intent", replace: true, to: `/items/${item.id}` },
+                      { key: "zh", label: "中文", prefetch: "intent", replace: true, to: `/items/${item.id}?lang=zh` },
                       { key: "original", label: "原文", prefetch: "intent", replace: true, to: `/items/${item.id}/original` },
                     ]}
                   />
                 )}
               </div>
-              {hasTranslation && lang === "zh" && !item.body.complete && (
-                <p className="mb-5 rounded-control bg-bg-sunk px-3 py-2 text-[13px] text-ink-3">译文尚不完整，完整内容请切换到原文。</p>
+              {hasTranslation && lang !== "original" && !item.body.complete && (
+                <p className="mb-5 rounded-control bg-bg-sunk px-3 py-2 text-[13px] text-ink-3">译文尚不完整，未译段落保留英文原文。</p>
               )}
+              {!isX && !hasTranslation && lang === "original" && <p className="mb-5 rounded-control bg-bg-sunk px-3 py-2 text-[13px] text-ink-3">暂未提供中文译文，当前显示原文。</p>}
               <ArticleBody html={bodyHtml} />
             </section>
           )}
 
           {isX && item.x!.media.length > 0 && <MediaGallery media={item.x!.media} postUrl={item.links.original} />}
-          {isX && item.x!.quoted?.text && <QuotedPost quoted={item.x!.quoted} original={lang === "original"} />}
+          {isX && item.x!.quoted?.text && <QuotedPost quoted={item.x!.quoted} original={lang === "original"} bilingual={lang === "bilingual"} />}
 
           <p className="mt-8 text-[13px] text-ink-4">
             来源：

@@ -16,7 +16,7 @@ function Author({ quoted }: { quoted: Pick<Quoted, "authorName" | "handle"> }) {
 }
 
 /** Item page: the whole quoted post, in Chinese with the original a tap away (the original view shows the original). */
-export function QuotedPost({ quoted, original = false }: { quoted: Quoted; original?: boolean }) {
+export function QuotedPost({ quoted, original = false, bilingual = false }: { quoted: Quoted; original?: boolean; bilingual?: boolean }) {
   const zh = original ? null : quoted.translation;
   return (
     <figure className="mt-6 rounded-tile border border-line px-4 py-3.5">
@@ -24,7 +24,8 @@ export function QuotedPost({ quoted, original = false }: { quoted: Quoted; origi
         <Author quoted={quoted} />
       </figcaption>
       <blockquote className="mt-2 whitespace-pre-line text-[15px] leading-[1.75] text-ink-2">{zh ?? quoted.text}</blockquote>
-      {zh && (
+      {zh && bilingual && <p className="mt-3 border-l-2 border-line-strong pl-3 whitespace-pre-line text-[14px] leading-[1.7] text-ink-3">{quoted.text}</p>}
+      {zh && !bilingual && (
         <details className="mt-2 text-[13px] text-ink-4">
           <summary className="cursor-pointer select-none hover:text-ink-3">原文</summary>
           <p className="mt-1.5 whitespace-pre-line text-[14px] leading-[1.7] text-ink-3">{quoted.text}</p>

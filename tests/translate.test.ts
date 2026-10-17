@@ -19,13 +19,17 @@ const URL_ = `https://example.com/translate-${T}`;
 let hold: ReturnType<typeof gate<void>> | null = null;
 const asked = gate();
 const asks = new Map<string, number>();
+const seenSegments: string[] = [];
 const provider = await stub(async (_hit, req) => {
   const { segments } = JSON.parse(JSON.parse(req.body).messages[1].content) as { segments: string[] };
+  seenSegments.push(...segments);
   if (hold) {
     asked.open();
     await hold.promise;
   }
   const t = segments.map((s) => {
+    if (s.includes("MIXED-CONTENT")) return "混合内容译文" + (s.match(/⟦\d+⟧/g) ?? []).join("")
+      + [...s.matchAll(/<a id="(L\d+)"/g)].map((m) => `<a id="${m[1]}">链接</a>`).join("");
     // A block with a link and an image: the first answer drops the link, the second keeps everything.
     if (s.includes("Neuroglancer")) {
       const n = (asks.get(s) ?? 0) + 1;
@@ -179,4 +183,79 @@ test("the post a selected X post quotes is translated once and shown with the it
   const receipts = await sql<{ status: string }[]>`SELECT status FROM receipts WHERE purpose = 'translate_quoted' AND subject = ${`quote:${tweetId}`}`;
   assert.equal(receipts.length, 1, "translated once");
   assert.equal(receipts[0]!.status, "completed");
+});
+
+test("historical non-selected full-text items are translated, while summary-only and withdrawn items are not", async () => {
+  const ids: string[] = [];
+  for (const visibility of ["public", "summary-only", "withdrawn"]) {
+    const { articleId: id } = await upsertMaterial({ sourceId: SOURCE, url: `${URL_}-old-${visibility}`, title: `Archive ${T}`, language: "en",
+      bodyText: `Historical English article ${T}.`, bodyHtml: `<p>Historical English article ${T}.</p>`, bodyStatus: "ok", via: "fetch",
+      discoveredAt: new Date("2020-01-01"), publishedAt: new Date("2020-01-01") });
+    await publishArticle(id);
+    await sql`UPDATE publications SET visibility=${visibility}, selected=false WHERE article_id=${id}`;
+    ids.push(id);
+  }
+  const run = await translatePending({ limit: 100, concurrency: 2 });
+  assert.ok(run.done.some(r => r.articleId === ids[0] && r.status === "translated"));
+  assert.equal((await sql`SELECT count(*) AS n FROM translations WHERE article_id IN ${sql(ids.slice(1))}`)[0]!.n, 0);
+  assert.equal((await translateArticle(ids[1]!)).status, "skipped");
+  assert.equal((await translateArticle(ids[2]!)).status, "skipped");
+});
+
+test("a partial long translation resumes beyond the old 60K cap and includes the final paragraph", async () => {
+  const paragraph = `Long English paragraph ${T} ${"full text ".repeat(220)}.`;
+  const html = Array.from({ length: 30 }, (_, i) => `<p>${paragraph} Paragraph ${i}.</p>`).join("");
+  assert.ok(html.length > 60000);
+  const { articleId: id } = await upsertMaterial({ sourceId: SOURCE, url: `${URL_}-long`, title: `Long article ${T}`, language: "en",
+    bodyHtml: html, bodyText: paragraph.repeat(30), bodyStatus: "ok", via: "fetch", discoveredAt: new Date(), publishedAt: new Date() });
+  await publishArticle(id);
+  await sql`INSERT INTO translations (article_id,lang,revision,body_html,body_text,complete,origin) VALUES (${id},'zh',1,${html},'部分译文',false,'model')`;
+  await sql`INSERT INTO translation_attempts (article_id,revision,attempts,outcome) VALUES (${id},1,1,'partial')`;
+  const run = await translatePending({ limit: 100 });
+  assert.ok(run.done.some(r => r.articleId === id && r.status === "translated"));
+  const [tr] = await sql`SELECT body_html,complete FROM translations WHERE article_id=${id}`;
+  assert.equal(tr!.complete, true);
+  assert.equal((tr!.body_html.match(/<p>译文<\/p>/g) ?? []).length, 30);
+  const calls = provider.hits();
+  await translatePending({ limit: 100 });
+  assert.equal(provider.hits(), calls, "complete translations are not charged again");
+});
+
+test("instructions around nested code and lists and non-Latin paragraphs are all translated", async () => {
+  const html = '<ol><li>MIXED-CONTENT install <a href="https://example.com/sdk">the SDK</a> using <code>setup.py</code>.'
+    + '<pre><code>print("English code stays")</code></pre>MIXED-CONTENT restart the server.'
+    + '<ul><li>MIXED-CONTENT nested instructions.</li></ul>MIXED-CONTENT final step.</li></ol>'
+    + '<p>ندعم أيضاً الطوابع الزمنية على مستوى الكلمات في عمليات التفريغ النصي.</p>';
+  const { articleId: id } = await upsertMaterial({ sourceId: SOURCE, url: `${URL_}-mixed`, title: `Mixed ${T}`, language: "en",
+    bodyHtml: html, bodyText: "English instructions and Arabic paragraphs.", bodyStatus: "ok", via: "fetch" });
+  await publishArticle(id);
+  const result = await translateArticle(id);
+  assert.equal(result.status, "translated");
+  const [tr] = await sql`SELECT body_html FROM translations WHERE article_id=${id}`;
+  assert.equal((tr!.body_html.match(/混合内容译文/g) ?? []).length, 4);
+  assert.ok(tr!.body_html.includes('print("English code stays")'));
+  assert.ok(tr!.body_html.includes('href="https://example.com/sdk"'));
+  assert.ok(tr!.body_html.includes("setup.py"));
+  assert.ok(tr!.body_html.includes("<p>译文</p>"));
+  assert.ok(!tr!.body_html.includes("ندعم"));
+});
+
+test("repairing skipped inline instructions preserves existing Chinese and requests only missing text", async () => {
+  const html = '<p>Already translated paragraph.</p><ol><li>MIXED-CONTENT start the app.<pre><code>npm start</code></pre></li></ol>';
+  const { articleId: id } = await upsertMaterial({ sourceId: SOURCE, url: `${URL_}-repair`, title: `Repair ${T}`, language: "en",
+    bodyHtml: html, bodyText: "Already translated paragraph. Start the app.", bodyStatus: "ok", via: "fetch" });
+  await publishArticle(id);
+  const held = html.replace('Already translated paragraph.', '这段中文已经翻译过，必须保留。');
+  await sql`INSERT INTO translations (article_id,lang,revision,body_html,body_text,complete,origin)
+    VALUES (${id},'zh',1,${held},'已有中文',true,'model')`;
+  const before = seenSegments.length;
+  assert.equal((await translateArticle(id, { untranslatedOnly: true })).status, "translated");
+  const asked = seenSegments.slice(before);
+  assert.ok(asked.length > 0);
+  assert.ok(asked.every(s => !s.includes('这段中文') && !s.includes('Already translated paragraph')));
+  const [tr] = await sql`SELECT body_html,complete FROM translations WHERE article_id=${id}`;
+  assert.ok(tr!.body_html.includes('这段中文已经翻译过，必须保留。'));
+  assert.ok(tr!.body_html.includes('混合内容译文'));
+  assert.ok(tr!.body_html.includes('<code>npm start</code>'));
+  assert.equal(tr!.complete, true);
 });
