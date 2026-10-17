@@ -4,5 +4,6 @@
 import type { ModuleDeclaration } from "@aihot/contracts/modules";
 import aiTools from "@aihot/ai-tools/module";
 import skillsMarket from "@aihot/skills-market/module";
+import aiIdeas from "@aihot/ai-ideas/module";
 
-export const MODULES: readonly ModuleDeclaration[] = [aiTools, skillsMarket];
+export const MODULES: readonly ModuleDeclaration[] = [aiIdeas, aiTools, skillsMarket];

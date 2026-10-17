@@ -2,5 +2,6 @@
 import type { WebModule } from "@aihot/web/modules";
 import aiTools from "@aihot/ai-tools/web";
 import skillsMarket from "@aihot/skills-market/web";
+import aiIdeas from "@aihot/ai-ideas/web";
 
-export const WEB_MODULES: readonly WebModule[] = [aiTools, skillsMarket];
+export const WEB_MODULES: readonly WebModule[] = [aiIdeas, aiTools, skillsMarket];

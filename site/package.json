@@ -4,6 +4,7 @@
   "type": "module",
   "sideEffects": false,
   "dependencies": {
+    "@aihot/ai-ideas": "*",
     "@aihot/ai-tools": "*",
     "@aihot/skills-market": "*"
   },

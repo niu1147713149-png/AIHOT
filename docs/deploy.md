@@ -282,6 +282,12 @@ docker compose logs -f --tail 100 api worker web
 - **付费采集**（X、公众号、Jina）：按请求计费，默认不启用，填了 key 才会用。
 - 所有付费服务都有每分钟、每小时、每天的调用上限（后台“设置 → 付费请求上限”），超过就暂停，不会一夜之间刷爆账单。填 0 表示立即停用这个服务。
 
+## 创意集市模块更新（2026-10-17）
+
+更新镜像后运行既有迁移流程，会新增 `ai_idea_editions`（0090），不删除原数据。公开页 `/ideas`、后台 `/admin/ideas`。
+需要每日自动生成时设置 `AI_IDEAS_DAILY_ENABLED=true` 与 `MODEL_CALLS_ENABLED=true` 并重建 api/worker 容器；每天北京时间 21:30 处理当天已公开新闻，沿用模型回执和预算熔断。没有新闻不调用模型，采集开关仍由原配置控制。
+开发时这两个开关保持关闭。临时生成指定一天可用模块 README 的独立 CLI，避免同时启动全部采集和翻译任务。
+
 ## 不用 Docker
 
 需要 Node.js 24.11 以上和 PostgreSQL 16 或 17，系统用 Linux 或 macOS；Windows 上请在 WSL2 里运行，或者用上面的 Docker 方式。

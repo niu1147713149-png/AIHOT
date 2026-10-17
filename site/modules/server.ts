@@ -2,5 +2,6 @@
 import type { ServerModule } from "@aihot/backend/modules";
 import aiTools from "@aihot/ai-tools/server";
 import skillsMarket from "@aihot/skills-market/server";
+import aiIdeas from "@aihot/ai-ideas/server";
 
-export const SERVER_MODULES: readonly ServerModule[] = [aiTools, skillsMarket];
+export const SERVER_MODULES: readonly ServerModule[] = [aiIdeas, aiTools, skillsMarket];
